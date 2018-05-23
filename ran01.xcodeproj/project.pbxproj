@@ -19,6 +19,10 @@
 		E75AF9D220B24363000B9BDD /* MyRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9D120B24363000B9BDD /* MyRankVC.swift */; };
 		E75AF9D420B24371000B9BDD /* FavoriteRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9D320B24371000B9BDD /* FavoriteRankVC.swift */; };
 		E75AF9D620B24457000B9BDD /* PropertyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9D520B24457000B9BDD /* PropertyVC.swift */; };
+		E75AF9FA20B31DD4000B9BDD /* AddRankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */; };
+		E75AF9FE20B371AD000B9BDD /* AddRankDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */; };
+		E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E4420B3D062007E5454 /* EachRankVC.swift */; };
+		E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8220B50524007E5454 /* AddCommentVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		E75AF9D120B24363000B9BDD /* MyRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRankVC.swift; sourceTree = "<group>"; };
 		E75AF9D320B24371000B9BDD /* FavoriteRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRankVC.swift; sourceTree = "<group>"; };
 		E75AF9D520B24457000B9BDD /* PropertyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyVC.swift; sourceTree = "<group>"; };
+		E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankingVC.swift; sourceTree = "<group>"; };
+		E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankDetailVC.swift; sourceTree = "<group>"; };
+		E7C10E4420B3D062007E5454 /* EachRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachRankVC.swift; sourceTree = "<group>"; };
+		E7C10E8220B50524007E5454 /* AddCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,10 @@
 				E75AF9D120B24363000B9BDD /* MyRankVC.swift */,
 				E75AF9D320B24371000B9BDD /* FavoriteRankVC.swift */,
 				E75AF9D520B24457000B9BDD /* PropertyVC.swift */,
+				E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */,
+				E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */,
+				E7C10E4420B3D062007E5454 /* EachRankVC.swift */,
+				E7C10E8220B50524007E5454 /* AddCommentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,14 +209,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E75AF9B720B23FEA000B9BDD /* FriendsRankVC.swift in Sources */,
+				E75AF9FE20B371AD000B9BDD /* AddRankDetailVC.swift in Sources */,
+				E75AF9FA20B31DD4000B9BDD /* AddRankingVC.swift in Sources */,
 				E75AF9D420B24371000B9BDD /* FavoriteRankVC.swift in Sources */,
 				E75AF9D020B24120000B9BDD /* AddUserVC.swift in Sources */,
 				E75AF9B320B23FEA000B9BDD /* AppDelegate.swift in Sources */,
 				E75AF9D220B24363000B9BDD /* MyRankVC.swift in Sources */,
 				E75AF9CC20B240C3000B9BDD /* AuthVC.swift in Sources */,
 				E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */,
+				E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */,
 				E75AF9D620B24457000B9BDD /* PropertyVC.swift in Sources */,
 				E75AF9CE20B240D3000B9BDD /* LoginVC.swift in Sources */,
+				E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

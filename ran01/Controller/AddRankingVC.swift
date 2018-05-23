@@ -1,14 +1,14 @@
 //
-//  FirstViewController.swift
+//  AddRankingVC.swift
 //  ran01
 //
-//  Created by Koki Tabayashi on 2018/05/20.
+//  Created by Koki Tabayashi on 2018/05/21.
 //  Copyright © 2018年 Koki Tabayashi. All rights reserved.
 //
 
 import UIKit
 
-class AllRankVC: UIViewController {
+class AddRankingVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -16,13 +16,16 @@ class AllRankVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    @IBAction func cancelBtnWasPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
-extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
+extension AddRankingVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -32,12 +35,13 @@ extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "parentTableCell") else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "addRankCell") else { return UITableViewCell() }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "EachRankVC", sender: nil)
+        performSegue(withIdentifier: "AddRankDetailVC", sender: nil)
     }
+    
 }
