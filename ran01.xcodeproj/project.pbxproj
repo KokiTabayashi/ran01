@@ -23,6 +23,11 @@
 		E75AF9FE20B371AD000B9BDD /* AddRankDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */; };
 		E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E4420B3D062007E5454 /* EachRankVC.swift */; };
 		E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8220B50524007E5454 /* AddCommentVC.swift */; };
+		E7C10E8520B61697007E5454 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8420B61697007E5454 /* DataService.swift */; };
+		E7C10E8720B61748007E5454 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8620B61748007E5454 /* Property.swift */; };
+		E7C10E8920B61958007E5454 /* PropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8820B61958007E5454 /* PropertyCell.swift */; };
+		E7C10E8B20B61D9F007E5454 /* PropertyMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */; };
+		E7C10E8F20B61DEB007E5454 /* PropertyLogoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,11 @@
 		E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankDetailVC.swift; sourceTree = "<group>"; };
 		E7C10E4420B3D062007E5454 /* EachRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachRankVC.swift; sourceTree = "<group>"; };
 		E7C10E8220B50524007E5454 /* AddCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentVC.swift; sourceTree = "<group>"; };
+		E7C10E8420B61697007E5454 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		E7C10E8620B61748007E5454 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		E7C10E8820B61958007E5454 /* PropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCell.swift; sourceTree = "<group>"; };
+		E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyMeVC.swift; sourceTree = "<group>"; };
+		E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLogoutVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +115,8 @@
 				E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */,
 				E7C10E4420B3D062007E5454 /* EachRankVC.swift */,
 				E7C10E8220B50524007E5454 /* AddCommentVC.swift */,
+				E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */,
+				E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +124,7 @@
 		E75AF9C720B24092000B9BDD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E7C10E8820B61958007E5454 /* PropertyCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -119,6 +132,7 @@
 		E75AF9C820B24097000B9BDD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E7C10E8620B61748007E5454 /* Property.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +147,7 @@
 		E75AF9CA20B240A5000B9BDD /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E7C10E8420B61697007E5454 /* DataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -208,11 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C10E8720B61748007E5454 /* Property.swift in Sources */,
 				E75AF9B720B23FEA000B9BDD /* FriendsRankVC.swift in Sources */,
+				E7C10E8920B61958007E5454 /* PropertyCell.swift in Sources */,
+				E7C10E8520B61697007E5454 /* DataService.swift in Sources */,
 				E75AF9FE20B371AD000B9BDD /* AddRankDetailVC.swift in Sources */,
 				E75AF9FA20B31DD4000B9BDD /* AddRankingVC.swift in Sources */,
 				E75AF9D420B24371000B9BDD /* FavoriteRankVC.swift in Sources */,
 				E75AF9D020B24120000B9BDD /* AddUserVC.swift in Sources */,
+				E7C10E8B20B61D9F007E5454 /* PropertyMeVC.swift in Sources */,
+				E7C10E8F20B61DEB007E5454 /* PropertyLogoutVC.swift in Sources */,
 				E75AF9B320B23FEA000B9BDD /* AppDelegate.swift in Sources */,
 				E75AF9D220B24363000B9BDD /* MyRankVC.swift in Sources */,
 				E75AF9CC20B240C3000B9BDD /* AuthVC.swift in Sources */,
