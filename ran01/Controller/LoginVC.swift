@@ -10,19 +10,34 @@ import UIKit
 
 class LoginVC: UIViewController {
 
-    @IBOutlet weak var userId: UITextField!
-    @IBOutlet weak var password: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var errorMessageLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    @IBAction func loginBtnWasPressed(_ sender: Any) {
+        if emailTextField.text != nil && passwordTextField != nil {
+            AuthService.instance.loginUser(withEmail: emailTextField.text!, andPassword: passwordTextField.text!) { (success, loginError) in
+                
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    print(String(describing: loginError?.localizedDescription))
+                    self.errorMessageLbl.isHidden = false
+                }
+            }
+        }
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-
-    @IBAction func loginBtnWasPressed(_ sender: Any) {
-    }
-    
 }
+
+extension LoginVC: UITextFieldDelegate { }

@@ -1,0 +1,6 @@
+framework module Pods_ran01 {
+  umbrella header "Pods-ran01-umbrella.h"
+
+  export *
+  module * { export * }
+}
