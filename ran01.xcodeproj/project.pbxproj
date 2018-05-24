@@ -28,6 +28,7 @@
 		E7C10E8920B61958007E5454 /* PropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8820B61958007E5454 /* PropertyCell.swift */; };
 		E7C10E8B20B61D9F007E5454 /* PropertyMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */; };
 		E7C10E8F20B61DEB007E5454 /* PropertyLogoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */; };
+		E7C10E9120B648E0007E5454 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7C10E9020B648E0007E5454 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E7C10E8820B61958007E5454 /* PropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCell.swift; sourceTree = "<group>"; };
 		E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyMeVC.swift; sourceTree = "<group>"; };
 		E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLogoutVC.swift; sourceTree = "<group>"; };
+		E7C10E9020B648E0007E5454 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				E75AF9BB20B23FEC000B9BDD /* Assets.xcassets */,
 				E75AF9BD20B23FEC000B9BDD /* LaunchScreen.storyboard */,
 				E75AF9C020B23FEC000B9BDD /* Info.plist */,
+				E7C10E9020B648E0007E5454 /* GoogleService-Info.plist */,
 			);
 			path = ran01;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E75AF9BF20B23FEC000B9BDD /* LaunchScreen.storyboard in Resources */,
+				E7C10E9120B648E0007E5454 /* GoogleService-Info.plist in Resources */,
 				E75AF9BC20B23FEC000B9BDD /* Assets.xcassets in Resources */,
 				E75AF9BA20B23FEA000B9BDD /* Main.storyboard in Resources */,
 			);

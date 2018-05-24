@@ -10,7 +10,19 @@ import UIKit
 
 class LoginVC: UIViewController {
 
+    @IBOutlet weak var userId: UITextField!
+    @IBOutlet weak var password: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func cancelBtnWasPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+
+    @IBAction func loginBtnWasPressed(_ sender: Any) {
+    }
+    
 }

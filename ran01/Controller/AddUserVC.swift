@@ -13,4 +13,8 @@ class AddUserVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func cancelBtnWasPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
