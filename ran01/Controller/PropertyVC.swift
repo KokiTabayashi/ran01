@@ -27,12 +27,12 @@ extension PropertyVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataService.instance.getProperties().count
+        return PropertyService.instance.getProperties().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "propertyTableCell") as? PropertyCell {
-            let property = DataService.instance.getProperties()[indexPath.row]
+            let property = PropertyService.instance.getProperties()[indexPath.row]
             cell.updateViews(property: property)
             return cell
         }
@@ -41,7 +41,7 @@ extension PropertyVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let property = DataService.instance.getProperties()[indexPath.row].propertyItem
+        let property = PropertyService.instance.getProperties()[indexPath.row].propertyItem
         
         performSegue(withIdentifier: property, sender: nil)
     }

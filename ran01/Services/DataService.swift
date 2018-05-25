@@ -16,7 +16,7 @@ class DataService {
     
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
-    private var _REF_FEED = DB_BASE.child("feed")
+    private var _REF_RANKING = DB_BASE.child("ranking")
     private var _REF_ITEMS = DB_BASE.child("items")
     private var _REF_COMMENTS = DB_BASE.child("comments")
     
@@ -28,8 +28,8 @@ class DataService {
         return _REF_USERS
     }
     
-    var REF_FEED: DatabaseReference {
-        return _REF_FEED
+    var REF_RANKING: DatabaseReference {
+        return _REF_RANKING
     }
     
     var REF_ITEMS: DatabaseReference {
@@ -41,8 +41,9 @@ class DataService {
     }
 
     // users
-    // - email(user ID)
+    // - email
     // - provider
+    // - username
     // - friends
     //   - (ID) -> user ID
     // - favorite
@@ -52,22 +53,115 @@ class DataService {
         REF_USERS.child(uid).updateChildValues(userData)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    private let properties = [
-    Property(propertyItem: "Me"),
-    Property(propertyItem: "Logout")
-    ]
-    
-    func getProperties() -> [Property] {
-        return properties
+    func getUserID(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                if user.key == uid {
+                    handler(user.childSnapshot(forPath: "email").value as! String)
+                }
+            }
+        }
     }
+    
+    func getUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                if user.key == uid {
+                    handler(user.childSnapshot(forPath: "username").value as! String)
+                }
+            }
+        }
+    }
+    
+    
+    // feed
+    // - title
+    // - user ID
+    // - date
+    // - explanation
+    // - items
+    //   - (ID) -> item ID
+    // - stars
+    //   - (ID) -> user ID
+    // - comments
+    //   - (ID) -> comment ID
+    
+//    func createFeed(uid: String, userData: Dictionary<String, Any>) {
+//        REF_RANKING.child(uid).updateChildValues(userData)
+//    }
+    
+//    func registerRanking(withTitle title: String, userId: String, registerRankingComplete: @escaping (_ status: Bool) -> ()) {
+//
+//        let dateAndTime = TimeService.instance.getDateAndTime()
+//
+//        REF_RANKING.childByAutoId().updateChildValues(["title": title, "userId": userId, "dateAndTime": dateAndTime])
+//        registerRankingComplete(true)
+//    }
+    
+    func registerRanking(withTitle title: String, userId: String, registerRankingComplete: @escaping (_ status: Bool, _ key: String) -> ()) {
+        
+        let dateAndTime = TimeService.instance.getDateAndTime()
+        let rankingKey = REF_RANKING.childByAutoId().key
+        let rankingInfo = ["title": title, "userId": userId, "dateAndTime": dateAndTime]
+        let childUpdates = ["/ranking/\(rankingKey)": rankingInfo]
+        
+        DB_BASE.updateChildValues(childUpdates)
+            
+//        REF_RANKING.childByAutoId().updateChildValues(["title": title, "userId": userId, "dateAndTime": dateAndTime])
+        registerRankingComplete(true, rankingKey)
+    }
+
+//    func getUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+//        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+//            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+//            for user in userSnapshot {
+//                if user.key == uid {
+//                    handler(user.childSnapshot(forPath: "username").value as! String)
+//                }
+//            }
+//        }
+//    }
+    
+    
+    func getRankingTitle(forRankingKey key: String, handler: @escaping (_ rankingTitle: String) -> ()) {
+        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for ranking in rankingSnapshot {
+                if ranking.key == key {
+                    handler(ranking.childSnapshot(forPath: "title").value as! String)
+                }
+            }
+        }
+    }
+    
+    func addRankingItemDetail(withRank rank: Int, title: String, explanation: String, image: String, withRankingKey rankingKey: String, addDetailComplete: @escaping (_ status: Bool) -> ()) {
+        
+        REF_ITEMS.child(rankingKey).childByAutoId().updateChildValues(["rank": rank, "title": title, "explanation": explanation, "image": image])
+        addDetailComplete(true)
+
+    }
+    
+    func getAllRankItemsFor(rankingKey: String, handler: @escaping (_ rankingItemsArray: [RankItem]) -> ()) {
+        var rankItemsArray = [RankItem]()
+        REF_ITEMS.child(rankingKey).observeSingleEvent(of: .value) { (rankingItemsSnapshot) in
+            guard let rankingItemsSnapshot = rankingItemsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for rankingItem in rankingItemsSnapshot {
+                let rank = rankingItem.childSnapshot(forPath: "rank").value as! Int
+                let title = rankingItem.childSnapshot(forPath: "title").value as! String
+                let image = rankingItem.childSnapshot(forPath: "image").value as! String
+                let explanation = rankingItem.childSnapshot(forPath: "explanation").value as! String
+                let stars = rankingItem.childSnapshot(forPath: "stars").value as! [String]
+                let rankItem = RankItem(rank: rank, title: title, image: image, explanation: explanation, stars: stars)
+                rankItemsArray.append(rankItem)
+            }
+            handler(rankItemsArray)
+        }
+    }
+    
+    
+
     
     
     

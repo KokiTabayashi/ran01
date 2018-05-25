@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		805E5EFCF1D3AFD4F5536FE4 /* Pods_ran01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F642CB43DD56329125D37F8 /* Pods_ran01.framework */; };
+		E70023E720B7F4C5002CEC74 /* AddRankItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */; };
 		E75AF9B320B23FEA000B9BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B220B23FEA000B9BDD /* AppDelegate.swift */; };
 		E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B420B23FEA000B9BDD /* AllRankVC.swift */; };
 		E75AF9B720B23FEA000B9BDD /* FriendsRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B620B23FEA000B9BDD /* FriendsRankVC.swift */; };
@@ -31,12 +32,19 @@
 		E7C10E8F20B61DEB007E5454 /* PropertyLogoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */; };
 		E7C10E9120B648E0007E5454 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7C10E9020B648E0007E5454 /* GoogleService-Info.plist */; };
 		E7C10E9320B66625007E5454 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E9220B66625007E5454 /* AuthService.swift */; };
+		E7C10E9520B78867007E5454 /* CreateRankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E9420B78867007E5454 /* CreateRankingVC.swift */; };
+		E7C10E9720B79417007E5454 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E9620B79417007E5454 /* TimeService.swift */; };
+		E7C10E9920B795BB007E5454 /* PropertyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E9820B795BB007E5454 /* PropertyService.swift */; };
+		E7C10E9B20B7D936007E5454 /* RankItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E9A20B7D936007E5454 /* RankItem.swift */; };
+		E7C10E9D20B7DBCD007E5454 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E9C20B7DBCD007E5454 /* Ranking.swift */; };
+		E7C10E9F20B7E80B007E5454 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E9E20B7E80B007E5454 /* UIViewControllerExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0F642CB43DD56329125D37F8 /* Pods_ran01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ran01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		547DC45A7FCE0E40E7D86527 /* Pods-ran01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ran01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ran01/Pods-ran01.debug.xcconfig"; sourceTree = "<group>"; };
 		AB22177D99947E444B98382B /* Pods-ran01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ran01.release.xcconfig"; path = "Pods/Target Support Files/Pods-ran01/Pods-ran01.release.xcconfig"; sourceTree = "<group>"; };
+		E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankItemCell.swift; sourceTree = "<group>"; };
 		E75AF9AF20B23FEA000B9BDD /* ran01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ran01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75AF9B220B23FEA000B9BDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E75AF9B420B23FEA000B9BDD /* AllRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankVC.swift; sourceTree = "<group>"; };
@@ -62,6 +70,12 @@
 		E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyLogoutVC.swift; sourceTree = "<group>"; };
 		E7C10E9020B648E0007E5454 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7C10E9220B66625007E5454 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		E7C10E9420B78867007E5454 /* CreateRankingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRankingVC.swift; sourceTree = "<group>"; };
+		E7C10E9620B79417007E5454 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
+		E7C10E9820B795BB007E5454 /* PropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyService.swift; sourceTree = "<group>"; };
+		E7C10E9A20B7D936007E5454 /* RankItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankItem.swift; sourceTree = "<group>"; };
+		E7C10E9C20B7DBCD007E5454 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
+		E7C10E9E20B7E80B007E5454 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +154,7 @@
 				E75AF9D120B24363000B9BDD /* MyRankVC.swift */,
 				E75AF9D320B24371000B9BDD /* FavoriteRankVC.swift */,
 				E75AF9D520B24457000B9BDD /* PropertyVC.swift */,
+				E7C10E9420B78867007E5454 /* CreateRankingVC.swift */,
 				E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */,
 				E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */,
 				E7C10E4420B3D062007E5454 /* EachRankVC.swift */,
@@ -154,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C10E8820B61958007E5454 /* PropertyCell.swift */,
+				E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				E7C10E8620B61748007E5454 /* Property.swift */,
+				E7C10E9C20B7DBCD007E5454 /* Ranking.swift */,
+				E7C10E9A20B7D936007E5454 /* RankItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +187,7 @@
 		E75AF9C920B2409E000B9BDD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E7C10E9E20B7E80B007E5454 /* UIViewControllerExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -178,6 +197,8 @@
 			children = (
 				E7C10E8420B61697007E5454 /* DataService.swift */,
 				E7C10E9220B66625007E5454 /* AuthService.swift */,
+				E7C10E9620B79417007E5454 /* TimeService.swift */,
+				E7C10E9820B795BB007E5454 /* PropertyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -301,14 +322,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C10E9B20B7D936007E5454 /* RankItem.swift in Sources */,
 				E7C10E8720B61748007E5454 /* Property.swift in Sources */,
 				E75AF9B720B23FEA000B9BDD /* FriendsRankVC.swift in Sources */,
 				E7C10E8920B61958007E5454 /* PropertyCell.swift in Sources */,
 				E7C10E8520B61697007E5454 /* DataService.swift in Sources */,
+				E7C10E9F20B7E80B007E5454 /* UIViewControllerExt.swift in Sources */,
 				E75AF9FE20B371AD000B9BDD /* AddRankDetailVC.swift in Sources */,
 				E75AF9FA20B31DD4000B9BDD /* AddRankingVC.swift in Sources */,
 				E7C10E9320B66625007E5454 /* AuthService.swift in Sources */,
+				E7C10E9720B79417007E5454 /* TimeService.swift in Sources */,
+				E70023E720B7F4C5002CEC74 /* AddRankItemCell.swift in Sources */,
 				E75AF9D420B24371000B9BDD /* FavoriteRankVC.swift in Sources */,
+				E7C10E9D20B7DBCD007E5454 /* Ranking.swift in Sources */,
 				E75AF9D020B24120000B9BDD /* AddUserVC.swift in Sources */,
 				E7C10E8B20B61D9F007E5454 /* PropertyMeVC.swift in Sources */,
 				E7C10E8F20B61DEB007E5454 /* PropertyLogoutVC.swift in Sources */,
@@ -316,7 +342,9 @@
 				E75AF9D220B24363000B9BDD /* MyRankVC.swift in Sources */,
 				E75AF9CC20B240C3000B9BDD /* AuthVC.swift in Sources */,
 				E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */,
+				E7C10E9520B78867007E5454 /* CreateRankingVC.swift in Sources */,
 				E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */,
+				E7C10E9920B795BB007E5454 /* PropertyService.swift in Sources */,
 				E75AF9D620B24457000B9BDD /* PropertyVC.swift in Sources */,
 				E75AF9CE20B240D3000B9BDD /* LoginVC.swift in Sources */,
 				E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */,

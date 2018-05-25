@@ -26,13 +26,20 @@ class LoginVC: UIViewController {
             AuthService.instance.loginUser(withEmail: emailTextField.text!, andPassword: passwordTextField.text!) { (success, loginError) in
                 
                 if success {
-                    self.dismiss(animated: true, completion: nil)
+//                    self.dismiss(animated: true, completion: nil)
+                    let AllRankVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
+                    self.present(AllRankVC!, animated: true, completion: nil)
                 } else {
                     print(String(describing: loginError?.localizedDescription))
                     self.errorMessageLbl.isHidden = false
                 }
             }
         }
+    }
+    
+    @IBAction func createBtnWasPressed(_ sender: Any) {
+        let AddUserVC = storyboard?.instantiateViewController(withIdentifier: "AddUserVC")
+        present(AddUserVC!, animated: true, completion: nil)
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PropertyLogoutVC: UIViewController {
     override func viewDidLoad() {
@@ -19,7 +20,13 @@ class PropertyLogoutVC: UIViewController {
     
     
     @IBAction func yesBtnWasPressed(_ sender: Any) {
-        
+        do {
+            try Auth.auth().signOut()
+            let authVC = self.storyboard?.instantiateViewController(withIdentifier: "AuthVC") as? AuthVC
+            self.present(authVC!, animated: true, completion: nil)
+        } catch {
+            print(error)
+        }
     }
     
     @IBAction func noBtnWasPressed(_ sender: Any) {

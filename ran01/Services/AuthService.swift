@@ -12,7 +12,7 @@ import Firebase
 class AuthService {
     static let instance = AuthService()
     
-    func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+    func registerUser(withEmail email: String, username: String,andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             guard let user = user else {
@@ -23,7 +23,7 @@ class AuthService {
             let friendsArray: [String] = []
             let favoriteArray: [String] = []
             
-            let userData = ["provider": user.providerID, "email": user.email as Any, "friends": friendsArray, "favorite": favoriteArray] as [String : Any]
+            let userData = ["provider": user.providerID, "email": user.email as Any, "username": username, "friends": friendsArray, "favorite": favoriteArray] as [String : Any]
             DataService.instance.createDBUser(uid: user.uid, userData: userData)
             userCreationComplete(true, nil)
         }        

@@ -16,10 +16,21 @@ class AuthVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        viewDidAppear(animated)
+        super.viewDidAppear(animated)
         
         if Auth.auth().currentUser != nil {
             dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func loginBtnWasPressed(_ sender: Any) {
+        let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")
+        present(loginVC!, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func createBtnWasPressed(_ sender: Any) {
+        let AddUserVC = storyboard?.instantiateViewController(withIdentifier: "AddUserVC")
+        present(AddUserVC!, animated: true, completion: nil)
     }
 }

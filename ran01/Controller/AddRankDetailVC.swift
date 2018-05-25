@@ -11,15 +11,36 @@ import UIKit
 class AddRankDetailVC: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var photoImage: UIButton!
+    @IBOutlet weak var nameOfItemTextField: UITextField!
+    @IBOutlet weak var explanationTextView: UITextView!
     
 //    let rankAllay = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     let rankAllay = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    
+    var rankingKey: String = ""
+    var rank: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        
+//        print("rankingKey:")
+//        print(rankingKey)
+    }
+    
+    @IBAction func photoBtnWasPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func doneBtnWasPressed(_ sender: Any) {
+        if nameOfItemTextField.text != nil && nameOfItemTextField.text != "" {
+            DataService.instance.addRankingItemDetail(withRank: rank, title: nameOfItemTextField.text!, explanation: explanationTextView.text, image: "", withRankingKey: rankingKey) { (success) in
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
@@ -45,6 +66,7 @@ extension AddRankDetailVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let choice = self.pickerView(pickerView, titleForRow: pickerView.selectedRow(inComponent: 0), forComponent: 0)
         
+        rank = Int(choice!)!
         print("\(choice!)")
     }
     
