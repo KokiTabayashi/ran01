@@ -49,6 +49,16 @@ class DataService {
     // - favorite
     //   - (ID) -> feed ID
     
+    func getCurrentUserId() -> String {
+        var userId: String = ""
+        if let Id = Auth.auth().currentUser?.uid {
+            userId = Id
+        }
+        return userId
+    }
+    
+    
+    
     func createDBUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
     }
@@ -143,20 +153,57 @@ class DataService {
 
     }
     
+    func getAllRankingFor(userId: String, friendsAllay: [String]?, favoritesAllay: [String]?, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+        var rankingArray = [Ranking]()
+        
+        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+            
+            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for ranking in rankingSnapshot {
+                
+                let title = ranking.childSnapshot(forPath: "title").value as! String
+//                let userId = userId
+                let userId = ranking.childSnapshot(forPath: "userId").value as! String
+                let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
+//                let explanation = ranking.childSnapshot(forPath: "explanation").value as! String
+                let explanation: String = ""
+                let itemsId: [String] = []
+                let starsId: [String] = []
+                let commentsId: [String] = []
+                
+                let ranking = Ranking(title: title, userId: userId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+                
+                rankingArray.append(ranking)
+            }
+            handler(rankingArray)
+        }
+    }
+    
+    
+    
+    
     func getAllRankItemsFor(rankingKey: String, handler: @escaping (_ rankingItemsArray: [RankItem]) -> ()) {
-        var rankItemsArray = [RankItem]()
+        
+        var rankingItemsArray = [RankItem]()
+        
         REF_ITEMS.child(rankingKey).observeSingleEvent(of: .value) { (rankingItemsSnapshot) in
+            
             guard let rankingItemsSnapshot = rankingItemsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            let stars: [String] = []
+            
             for rankingItem in rankingItemsSnapshot {
                 let rank = rankingItem.childSnapshot(forPath: "rank").value as! Int
                 let title = rankingItem.childSnapshot(forPath: "title").value as! String
                 let image = rankingItem.childSnapshot(forPath: "image").value as! String
                 let explanation = rankingItem.childSnapshot(forPath: "explanation").value as! String
-                let stars = rankingItem.childSnapshot(forPath: "stars").value as! [String]
+                // Need to think about solution here. Just commented out for now.
+//                let stars = rankingItem.childSnapshot(forPath: "stars").value as! [String]
                 let rankItem = RankItem(rank: rank, title: title, image: image, explanation: explanation, stars: stars)
-                rankItemsArray.append(rankItem)
+                rankingItemsArray.append(rankItem)
             }
-            handler(rankItemsArray)
+            handler(rankingItemsArray)
         }
     }
     
