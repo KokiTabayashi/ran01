@@ -9,6 +9,7 @@
 import Foundation
 
 class Ranking {
+    private var _rankingKey: String
     private var _title: String
     private var _userId: String
     private var _date: String
@@ -16,6 +17,10 @@ class Ranking {
     private var _itemsId: [String]
     private var _starsId: [String]
     private var _commentsId: [String]
+    
+    var rankingKey: String {
+        return _rankingKey
+    }
     
     var title: String {
         return _title
@@ -45,7 +50,8 @@ class Ranking {
         return _commentsId
     }
     
-    init(title: String, userId: String, date: String, explanation: String, itemsId: [String], starsId: [String], commentsId: [String]) {
+    init(rankingKey: String, title: String, userId: String, date: String, explanation: String, itemsId: [String], starsId: [String], commentsId: [String]) {
+        self._rankingKey = rankingKey
         self._title = title
         self._userId = userId
         self._date = date

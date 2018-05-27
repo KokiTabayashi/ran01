@@ -825,7 +825,7 @@
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="createBtnWasPressed:" destination="lLj-nM-dlE" eventType="touchUpInside" id="MLd-qM-Eww"/>
+                                            <action selector="createBtnWasPressed:" destination="lLj-nM-dlE" eventType="touchUpInside" id="whn-gz-JwG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -878,7 +878,7 @@
                     <connections>
                         <outlet property="errorMessageLbl" destination="XTR-Zi-h7d" id="OEy-Kg-Bhe"/>
                         <outlet property="rankingNameTextField" destination="OPX-zZ-4TI" id="JVT-A1-Qu5"/>
-                        <segue destination="ugA-Gf-gvW" kind="presentation" identifier="AddRankingVC" id="gEN-tN-zyf"/>
+                        <segue destination="CJv-UD-RYV" kind="presentation" identifier="AddRankDetailVC" id="CfG-Ug-d9b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1V-1R-lJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1052,12 +1052,11 @@
                     <connections>
                         <outlet property="rankingNameLbl" destination="vv6-ED-Wiv" id="3Nf-mD-h5q"/>
                         <outlet property="tableView" destination="yU0-5l-pn6" id="W9q-YX-Q2d"/>
-                        <segue destination="CJv-UD-RYV" kind="show" identifier="AddRankDetailVC" id="1Dh-XU-mfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSc-70-ZCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2758" y="-1380"/>
+            <point key="canvasLocation" x="2758" y="-2138"/>
         </scene>
         <!--Add Rank DetailVC-->
         <scene sceneID="6MI-fr-Ed0">
@@ -1225,11 +1224,12 @@
                         <outlet property="nameOfItemTextField" destination="f9f-6V-5Tn" id="oa3-Vs-CKP"/>
                         <outlet property="photoImage" destination="IJ1-ux-5aC" id="zzg-UX-wDR"/>
                         <outlet property="pickerView" destination="RYg-7e-fCI" id="vC8-dI-MLH"/>
+                        <segue destination="ugA-Gf-gvW" kind="show" identifier="AddRankingVC" id="BIL-kG-a7E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRs-Fd-CKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3599" y="-1380"/>
+            <point key="canvasLocation" x="2758" y="-1380"/>
         </scene>
         <!--Friends-->
         <scene sceneID="wg7-f3-ORb">

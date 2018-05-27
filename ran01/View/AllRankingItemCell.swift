@@ -29,7 +29,8 @@ class AllRankingItemCell: UITableViewCell {
     @IBOutlet weak var secondRankItemImage: UIImageView!
     @IBOutlet weak var thirdRankItemImage: UIImageView!
     
-    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankNumber: [Int], rankItemName: [String], rankItemImage: [String]) {
+//    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankNumber: [Int], rankItemName: [String], rankItemImage: [String]) {
+    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankItemDetail: [RankItem], rankItemName: [String], rankItemImage: [String]) {
 //        self.rankLbl.text = "\(rank)"
         
         titleOfRankingLbl.text = title
@@ -38,10 +39,46 @@ class AllRankingItemCell: UITableViewCell {
 //        profileOfOwnerImage.image = profileOfOwner
 //        friendImage.image = fried
         
-//        firstRankNumberLbl.text = "\(rankNumber[0])"
+//        if rankNumber.count > 0 {
+//            if "\(rankNumber[0])" != "" {
+//                firstRankNumberLbl.text = "\(rankNumber[0])"
+//            }}
+//        if "\(rankNumber[1])" != "" {
 //        secondRankNumberLbl.text = "\(rankNumber[1])"
+//        }
+//        if "\(rankNumber[2])" != "" {
 //        thirdRankNumberLbl.text = "\(rankNumber[2])"
-//        
+//        }
+        
+        if rankItemDetail.count > 0 {
+            firstRankNumberLbl.text = "\(rankItemDetail[0].rank)"
+            
+            if rankItemDetail.count > 1 {
+                secondRankNumberLbl.text = "\(rankItemDetail[1].rank)"
+                
+                if rankItemDetail.count > 2 {
+                    thirdRankNumberLbl.text = "\(rankItemDetail[2].rank)"
+                }
+            }
+        }
+        
+        if rankItemDetail.count > 0 {
+            if rankItemDetail[0].title != "" {
+                firstRankItemNameLbl.text = rankItemDetail[0].title
+            }
+            
+            if rankItemDetail.count > 1 {
+                if rankItemDetail[1].title != "" {
+                    secondRankItemNameLbl.text = rankItemDetail[1].title
+                }
+                if rankItemDetail.count > 2 {
+                    if rankItemDetail[2].title != "" {
+                        thirdRankItemNameLbl.text = rankItemDetail[2].title
+                    }
+                }
+            }
+        }
+        
 //        firstRankItemNameLbl.text = rankItemName[0]
 //        secondRankItemNameLbl.text = rankItemName[1]
 //        thirdRankItemNameLbl.text = rankItemName[2]

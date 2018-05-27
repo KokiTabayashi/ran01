@@ -27,7 +27,7 @@ class CreateRankingVC: UIViewController {
                     if success && rankingKey != "" {
                         
                         let rankingKey: String = rankingKey
-                        self.performSegue(withIdentifier: "AddRankingVC", sender: rankingKey)
+                        self.performSegue(withIdentifier: "AddRankDetailVC", sender: rankingKey)
                         
                     } else {
                         self.errorMessageLbl.isHidden = false
@@ -38,8 +38,8 @@ class CreateRankingVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let addRankingVC = segue.destination as? AddRankingVC {
-            addRankingVC.rankingKey = sender as! String
+        if let addRankDetailVC = segue.destination as? AddRankDetailVC {
+            addRankDetailVC.rankingKey = sender as! String
         }
     }
     

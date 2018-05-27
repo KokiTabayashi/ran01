@@ -161,7 +161,8 @@ class DataService {
             guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
             
             for ranking in rankingSnapshot {
-                
+                let rankingKey = ranking.key
+//                let rankingKey = "key"
                 let title = ranking.childSnapshot(forPath: "title").value as! String
 //                let userId = userId
                 let userId = ranking.childSnapshot(forPath: "userId").value as! String
@@ -172,7 +173,7 @@ class DataService {
                 let starsId: [String] = []
                 let commentsId: [String] = []
                 
-                let ranking = Ranking(title: title, userId: userId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: userId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
                 
                 rankingArray.append(ranking)
             }

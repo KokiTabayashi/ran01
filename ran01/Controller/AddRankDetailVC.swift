@@ -38,13 +38,20 @@ class AddRankDetailVC: UIViewController {
     @IBAction func doneBtnWasPressed(_ sender: Any) {
         if nameOfItemTextField.text != nil && nameOfItemTextField.text != "" {
             DataService.instance.addRankingItemDetail(withRank: rank, title: nameOfItemTextField.text!, explanation: explanationTextView.text, image: "", withRankingKey: rankingKey) { (success) in
-                self.dismiss(animated: true, completion: nil)
+//                self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "AddRankingVC", sender: self.rankingKey)
             }
         }
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let addRankingVC = segue.destination as? AddRankingVC {
+            addRankingVC.rankingKey = sender as! String
+        }
     }
 }
 
