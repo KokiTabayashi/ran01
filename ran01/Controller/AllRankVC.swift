@@ -12,16 +12,15 @@ class AllRankVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-//    var numberOfRowInTableView = 10
-    
-    // rankingKey needs to be replaced by rankingKey = rankingArray[].key or something
-//    var rankingKey: String = "-LDKmSBGqH6iJ8Z8UaZZ"
     var rankingKey: String = ""
-    
-//    var rankingTitle: String = ""
-    
+    var nameOfRankingOwner: String = ""
     var rankingArray: [Ranking] = []
     var rankItemsArray: [RankItem] = []
+    var rankItemDetailArray: [RankItem] = []
+    
+    var rankItem1 = [Int: RankItem]()
+    var rankItem2 = [Int: RankItem]()
+    var rankItem3 = [Int: RankItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,60 +29,40 @@ class AllRankVC: UIViewController {
         tableView.dataSource = self
         
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        DataService.instance.getRankingTitle(forRankingKey: rankingKey) { (returnedRankingTitle) in
-//            self.rankingTitle = returnedRankingTitle
-//
-//            // Test -> Succeeded.
-//            print(returnedRankingTitle)
-//        }
-//
-//        self.tableView.reloadData()
-////        DataService.instance.getAllRankItemsFor(rankingKey: rankingKey) { (returnedRankItem) in
-////            self.rankItemsArray = returnedRankItem
-////        }
-//    }
-    
-    // try View Did Appear -> Succeeded
-    override func viewDidAppear(_ animated: Bool) {
-        super .viewDidAppear(animated)
+
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
         
         let userId = DataService.instance.getCurrentUserId()
         
-        // for now
-        var friendsAllay: [String] = []
-        var favoritsAllay: [String] = []
-        
-//        DataService.instance.getRankingTitle(forRankingKey: rankingKey) { (returnedRankingTitle) in
-//            self.rankingTitle = returnedRankingTitle
-        
-            // Test -> Succeeded.
-//            print(returnedRankingTitle)
-//        }
+        let friendsAllay: [String] = []
+        let favoritsAllay: [String] = []
         
         DataService.instance.getAllRankingFor(userId: userId, friendsAllay: friendsAllay, favoritesAllay: favoritsAllay) { (returnRanking) in
-            self.rankingArray = returnRanking
+            self.rankingArray = returnRanking.reversed()
             
-            // Test -> Succeeded.
-//            print(self.rankingArray[0].title)
-//            print(self.rankingArray[1].title)
-//            print(self.rankingArray[2].title)
-            
-            // Test -> Succeeded.
+            // Test
+//            for ranking in self.rankingArray {
+//                DataService.instance.getAllRankItemsFor(rankingKey: ranking.rankingKey, handler: { (returnRankItem) in
+//                    let rankItemArray = returnRankItem
+//
+//                    if rankItemArray.count >= 3 {
+//                        self.rankItem1[0] = rankItemArray[0]
+//                        self.rankItem1[1] = rankItemArray[1]
+//                        self.rankItem1[2] = rankItemArray[2]
+//                    } else if rankItemArray.count == 2 {
+//                        self.rankItem1[0] = rankItemArray[0]
+//                        self.rankItem1[1] = rankItemArray[1]
+//                    } else if rankItemArray.count == 1 {
+//                        self.rankItem1[0] = rankItemArray[0]
+//                    }
+//
+//                })
+//            }
+
             self.tableView.reloadData()
         }
-        
-//        DataService.instance.getAllRankItemsFor(rankingKey: rankingKey) { (returnedRankItem) in
-//            self.rankItemsArray = returnedRankItem
-//        }
-        
-        self.tableView.reloadData()
     }
-    
-    
 }
 
 extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
@@ -92,7 +71,6 @@ extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return numberOfRowInTableView
         return rankingArray.count
     }
     
@@ -103,59 +81,44 @@ extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-//        print("HERE IS A PRINT TEST !!!")
-//        print(rankingTitle)
-        
-//        print(rankItem.title)
-
-//        cell.configureCell(rank: 1, title: rankingTitle, itemImage: "1", explanation: "1")
-      
-        
-//        var rankNumberArray: [Int] = []
-        
-//        if [rankItemsArray[indexPath.row].rank].count > 0 {
-//            rankNumberArray = [rankItemsArray[indexPath.row].rank]
-//        }
-        
-        let rankNumberArray: [Int] = []
-        let rankItemNameArray: [String] = []
-        let rankItemImageArray: [String] = []
-        
-  // Old
-//        DataService.instance.getUsername(forUID: rankingArray[indexPath.row].userId) { (nameOfRankingOwner) in
-//
-//            cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankNumber: rankNumberArray, rankItemName: rankItemNameArray, rankItemImage: rankItemImageArray)
-////            cell.configureCell(title: self.rankingArray[indexPath.row].rankingKey, nameOfRankingOwner: nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankNumber: rankNumberArray, rankItemName: rankItemNameArray, rankItemImage: rankItemImageArray)
-//
+        DataService.instance.getUsername(forUID: rankingArray[indexPath.row].userId) { (nameOfRankingOwner) in
+            self.nameOfRankingOwner = nameOfRankingOwner
+            
+            
+            
+            // Test
+            DataService.instance.getAllRankItemsFor(rankingKey: self.rankingArray[indexPath.row].rankingKey, handler: { (returnedRankItem) in
+                self.rankItemsArray = returnedRankItem
+                
+                if self.rankItemsArray.count >= 3 {
+                    self.rankItem1[0] = self.rankItemsArray[0]
+                    self.rankItem1[1] = self.rankItemsArray[1]
+                    self.rankItem1[2] = self.rankItemsArray[2]
+                } else if self.rankItemsArray.count == 2 {
+                    self.rankItem1[0] = self.rankItemsArray[0]
+                    self.rankItem1[1] = self.rankItemsArray[1]
+                } else if self.rankItemsArray.count == 1 {
+                    self.rankItem1[0] = self.rankItemsArray[0]
+                }
+//                self.rankItem1[0] = self.rankItemsArray[0]
+//                self.rankItem1[1] = self.rankItemsArray[1]
+//                self.rankItem1[2] = self.rankItemsArray[2]
+                
+                cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: self.nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItem1)
+            })
+            
+            
+            
+            
 //            DataService.instance.getAllRankItemsFor(rankingKey: self.rankingArray[indexPath.row].rankingKey) { (returnedRankItem) in
 //                self.rankItemsArray = returnedRankItem
 //
+//                cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: self.nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItemsArray)
 //            }
-//        }
-        
-        // New
-        DataService.instance.getUsername(forUID: rankingArray[indexPath.row].userId) { (nameOfRankingOwner) in
             
-            DataService.instance.getAllRankItemsFor(rankingKey: self.rankingArray[indexPath.row].rankingKey) { (returnedRankItem) in
-                
-                self.rankItemsArray = returnedRankItem
-                
-                cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItemsArray, rankItemName: rankItemNameArray, rankItemImage: rankItemImageArray)
-            }
+            
         }
         
-
-        
-//        cell.configureCell(rank: 1, title: rankingArray[indexPath.row].title, itemImage: "1", explanation: "1")
-        
-        // This Worked
-//        cell.configureCell(rank: 1, title: rankItemsArray[indexPath.row].title, itemImage: "1", explanation: "1")
-        
-        // Test Succeeded
-//        cell.configureCell(rank: 1, title: rankingKey, itemImage: "1", explanation: "1")
-        // Test Succeeded
-//        cell.configureCell(rank: 1, title: "How about this", itemImage: "1", explanation: "1")
-
         return cell
     }
     

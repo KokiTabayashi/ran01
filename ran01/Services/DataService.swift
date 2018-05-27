@@ -39,15 +39,6 @@ class DataService {
     var REF_COMMENTS: DatabaseReference {
         return _REF_COMMENTS
     }
-
-    // users
-    // - email
-    // - provider
-    // - username
-    // - friends
-    //   - (ID) -> user ID
-    // - favorite
-    //   - (ID) -> feed ID
     
     func getCurrentUserId() -> String {
         var userId: String = ""
@@ -85,31 +76,6 @@ class DataService {
         }
     }
     
-    
-    // feed
-    // - title
-    // - user ID
-    // - date
-    // - explanation
-    // - items
-    //   - (ID) -> item ID
-    // - stars
-    //   - (ID) -> user ID
-    // - comments
-    //   - (ID) -> comment ID
-    
-//    func createFeed(uid: String, userData: Dictionary<String, Any>) {
-//        REF_RANKING.child(uid).updateChildValues(userData)
-//    }
-    
-//    func registerRanking(withTitle title: String, userId: String, registerRankingComplete: @escaping (_ status: Bool) -> ()) {
-//
-//        let dateAndTime = TimeService.instance.getDateAndTime()
-//
-//        REF_RANKING.childByAutoId().updateChildValues(["title": title, "userId": userId, "dateAndTime": dateAndTime])
-//        registerRankingComplete(true)
-//    }
-    
     func registerRanking(withTitle title: String, userId: String, registerRankingComplete: @escaping (_ status: Bool, _ key: String) -> ()) {
         
         let dateAndTime = TimeService.instance.getDateAndTime()
@@ -118,21 +84,9 @@ class DataService {
         let childUpdates = ["/ranking/\(rankingKey)": rankingInfo]
         
         DB_BASE.updateChildValues(childUpdates)
-            
-//        REF_RANKING.childByAutoId().updateChildValues(["title": title, "userId": userId, "dateAndTime": dateAndTime])
+        
         registerRankingComplete(true, rankingKey)
     }
-
-//    func getUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
-//        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
-//            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
-//            for user in userSnapshot {
-//                if user.key == uid {
-//                    handler(user.childSnapshot(forPath: "username").value as! String)
-//                }
-//            }
-//        }
-//    }
     
     
     func getRankingTitle(forRankingKey key: String, handler: @escaping (_ rankingTitle: String) -> ()) {
@@ -162,12 +116,10 @@ class DataService {
             
             for ranking in rankingSnapshot {
                 let rankingKey = ranking.key
-//                let rankingKey = "key"
+
                 let title = ranking.childSnapshot(forPath: "title").value as! String
-//                let userId = userId
                 let userId = ranking.childSnapshot(forPath: "userId").value as! String
                 let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
-//                let explanation = ranking.childSnapshot(forPath: "explanation").value as! String
                 let explanation: String = ""
                 let itemsId: [String] = []
                 let starsId: [String] = []

@@ -218,7 +218,7 @@
                                             <outlet property="nameOfRankingOwnerLbl" destination="PHN-3y-R9N" id="3IV-VU-RFq"/>
                                             <outlet property="profileOfOwnerImage" destination="LeR-e3-3ZJ" id="Xfc-7n-opP"/>
                                             <outlet property="secondRankItemImage" destination="C08-JV-sRZ" id="M2h-7n-DCa"/>
-                                            <outlet property="secondRankItemNameLbl" destination="ww1-hH-Xnb" id="eox-T2-dAb"/>
+                                            <outlet property="secondRankItemNameLbl" destination="bvB-6I-PaF" id="VVg-Az-zdz"/>
                                             <outlet property="secondRankNumberLbl" destination="yRa-rq-Fk3" id="u7C-E1-GZd"/>
                                             <outlet property="thirdRankItemImage" destination="mms-ev-eZw" id="Jk8-WU-wTr"/>
                                             <outlet property="thirdRankItemNameLbl" destination="ww1-hH-Xnb" id="G8F-hS-R3U"/>

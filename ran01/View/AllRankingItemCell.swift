@@ -29,70 +29,92 @@ class AllRankingItemCell: UITableViewCell {
     @IBOutlet weak var secondRankItemImage: UIImageView!
     @IBOutlet weak var thirdRankItemImage: UIImageView!
     
-//    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankNumber: [Int], rankItemName: [String], rankItemImage: [String]) {
-    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankItemDetail: [RankItem], rankItemName: [String], rankItemImage: [String]) {
-//        self.rankLbl.text = "\(rank)"
-        
+//    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankItemDetail: [RankItem]) {
+    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankItemDetail: [Int : RankItem]) {
+    
         titleOfRankingLbl.text = title
         nameOfRankingOwnerLbl.text = nameOfRankingOwner
         dateRankingWasCreatedLbl.text = dateRankingWasCreated
-//        profileOfOwnerImage.image = profileOfOwner
-//        friendImage.image = fried
         
-//        if rankNumber.count > 0 {
-//            if "\(rankNumber[0])" != "" {
-//                firstRankNumberLbl.text = "\(rankNumber[0])"
-//            }}
-//        if "\(rankNumber[1])" != "" {
-//        secondRankNumberLbl.text = "\(rankNumber[1])"
-//        }
-//        if "\(rankNumber[2])" != "" {
-//        thirdRankNumberLbl.text = "\(rankNumber[2])"
-//        }
         
-        if rankItemDetail.count > 0 {
-            firstRankNumberLbl.text = "\(rankItemDetail[0].rank)"
-            
-            if rankItemDetail.count > 1 {
-                secondRankNumberLbl.text = "\(rankItemDetail[1].rank)"
-                
-                if rankItemDetail.count > 2 {
-                    thirdRankNumberLbl.text = "\(rankItemDetail[2].rank)"
-                }
-            }
+        if let rank = rankItemDetail[0]?.rank {
+            firstRankNumberLbl.text = "\(rank)"
+        } else {
+            firstRankNumberLbl.text = "-"
+        }
+        if let rank = rankItemDetail[1]?.rank {
+            secondRankNumberLbl.text = "\(rank)"
+        } else {
+            secondRankNumberLbl.text = "-"
+        }
+        if let rank = rankItemDetail[2]?.rank {
+            thirdRankNumberLbl.text = "\(rank)"
+        } else {
+            thirdRankNumberLbl.text = "-"
         }
         
+        
+//        if rankItemDetail.count > 0 {
+//            firstRankNumberLbl.text = "\(rankItemDetail[0].rank)"
+//
+//            if rankItemDetail.count > 1 {
+//                secondRankNumberLbl.text = "\(rankItemDetail[1].rank)"
+//
+//                if rankItemDetail.count > 2 {
+//                    thirdRankNumberLbl.text = "\(rankItemDetail[2].rank)"
+//                }
+//            }
+//        }
+        
+        
         if rankItemDetail.count > 0 {
-            if rankItemDetail[0].title != "" {
-                firstRankItemNameLbl.text = rankItemDetail[0].title
+            if rankItemDetail[0]?.title != "" {
+                firstRankItemNameLbl.text = rankItemDetail[0]?.title
+            } else {
+                firstRankItemNameLbl.text = "-"
             }
             
             if rankItemDetail.count > 1 {
-                if rankItemDetail[1].title != "" {
-                    secondRankItemNameLbl.text = rankItemDetail[1].title
+                if rankItemDetail[1]?.title != "" {
+                    secondRankItemNameLbl.text = rankItemDetail[1]?.title
+                } else {
+                    secondRankItemNameLbl.text = "-"
                 }
                 if rankItemDetail.count > 2 {
-                    if rankItemDetail[2].title != "" {
-                        thirdRankItemNameLbl.text = rankItemDetail[2].title
+                    if rankItemDetail[2]?.title != "" {
+                        thirdRankItemNameLbl.text = rankItemDetail[2]?.title
+                    } else {
+                        thirdRankItemNameLbl.text = "-"
                     }
                 }
             }
         }
         
-//        firstRankItemNameLbl.text = rankItemName[0]
-//        secondRankItemNameLbl.text = rankItemName[1]
-//        thirdRankItemNameLbl.text = rankItemName[2]
-        
-//        firstRankItemImage.image = rankItemImage[0]
-//        secondRankItemImage.image = rankItemImage[1]
-//        thirdRankItemImage.image = rankItemImage[2]
         
         
-        // Test Succeeded.
-//        titleOfRankingLbl.text = "Test of configureCell"
         
         
-        //        self.itemImage.image =
-//        self.explanationLbl.text = explanation
+//        if rankItemDetail.count > 0 {
+//            if rankItemDetail[0].title != "" {
+//                firstRankItemNameLbl.text = rankItemDetail[0].title
+//            } else {
+//                firstRankItemNameLbl.text = "-"
+//            }
+//
+//            if rankItemDetail.count > 1 {
+//                if rankItemDetail[1].title != "" {
+//                    secondRankItemNameLbl.text = rankItemDetail[1].title
+//                } else {
+//                    secondRankItemNameLbl.text = "-"
+//                }
+//                if rankItemDetail.count > 2 {
+//                    if rankItemDetail[2].title != "" {
+//                        thirdRankItemNameLbl.text = rankItemDetail[2].title
+//                    } else {
+//                        thirdRankItemNameLbl.text = "-"
+//                    }
+//                }
+//            }
+//        }
     }
 }
