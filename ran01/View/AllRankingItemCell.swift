@@ -29,7 +29,7 @@ class AllRankingItemCell: UITableViewCell {
     @IBOutlet weak var secondRankItemImage: UIImageView!
     @IBOutlet weak var thirdRankItemImage: UIImageView!
     
-//    func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankItemDetail: [RankItem]) {
+
     func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankItemDetail: [Int : RankItem]) {
     
         titleOfRankingLbl.text = title
@@ -54,67 +54,44 @@ class AllRankingItemCell: UITableViewCell {
         }
         
         
-//        if rankItemDetail.count > 0 {
-//            firstRankNumberLbl.text = "\(rankItemDetail[0].rank)"
-//
-//            if rankItemDetail.count > 1 {
-//                secondRankNumberLbl.text = "\(rankItemDetail[1].rank)"
-//
-//                if rankItemDetail.count > 2 {
-//                    thirdRankNumberLbl.text = "\(rankItemDetail[2].rank)"
-//                }
-//            }
-//        }
         
-        
-        if rankItemDetail.count > 0 {
+        if rankItemDetail.count > 2 {
             if rankItemDetail[0]?.title != "" {
                 firstRankItemNameLbl.text = rankItemDetail[0]?.title
             } else {
                 firstRankItemNameLbl.text = "-"
             }
-            
-            if rankItemDetail.count > 1 {
-                if rankItemDetail[1]?.title != "" {
-                    secondRankItemNameLbl.text = rankItemDetail[1]?.title
-                } else {
-                    secondRankItemNameLbl.text = "-"
-                }
-                if rankItemDetail.count > 2 {
-                    if rankItemDetail[2]?.title != "" {
-                        thirdRankItemNameLbl.text = rankItemDetail[2]?.title
-                    } else {
-                        thirdRankItemNameLbl.text = "-"
-                    }
-                }
+            if rankItemDetail[1]?.title != "" {
+                secondRankItemNameLbl.text = rankItemDetail[1]?.title
+            } else {
+                secondRankItemNameLbl.text = "-"
             }
+            if rankItemDetail[2]?.title != "" {
+                thirdRankItemNameLbl.text = rankItemDetail[2]?.title
+            } else {
+                thirdRankItemNameLbl.text = "-"
+            }
+        } else if rankItemDetail.count > 1 {
+            if rankItemDetail[0]?.title != "" {
+                firstRankItemNameLbl.text = rankItemDetail[0]?.title
+            } else {
+                firstRankItemNameLbl.text = "-"
+            }
+            if rankItemDetail[1]?.title != "" {
+                secondRankItemNameLbl.text = rankItemDetail[1]?.title
+            } else {
+                secondRankItemNameLbl.text = "-"
+            }
+                thirdRankItemNameLbl.text = "-"
+        } else if rankItemDetail.count > 0 {
+            if rankItemDetail[0]?.title != "" {
+                firstRankItemNameLbl.text = rankItemDetail[0]?.title
+            } else {
+                firstRankItemNameLbl.text = "-"
+            }
+            secondRankItemNameLbl.text = "-"
+            thirdRankItemNameLbl.text = "-"
         }
         
-        
-        
-        
-        
-//        if rankItemDetail.count > 0 {
-//            if rankItemDetail[0].title != "" {
-//                firstRankItemNameLbl.text = rankItemDetail[0].title
-//            } else {
-//                firstRankItemNameLbl.text = "-"
-//            }
-//
-//            if rankItemDetail.count > 1 {
-//                if rankItemDetail[1].title != "" {
-//                    secondRankItemNameLbl.text = rankItemDetail[1].title
-//                } else {
-//                    secondRankItemNameLbl.text = "-"
-//                }
-//                if rankItemDetail.count > 2 {
-//                    if rankItemDetail[2].title != "" {
-//                        thirdRankItemNameLbl.text = rankItemDetail[2].title
-//                    } else {
-//                        thirdRankItemNameLbl.text = "-"
-//                    }
-//                }
-//            }
-//        }
     }
 }

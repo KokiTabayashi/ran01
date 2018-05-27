@@ -18,9 +18,7 @@ class AllRankVC: UIViewController {
     var rankItemsArray: [RankItem] = []
     var rankItemDetailArray: [RankItem] = []
     
-    var rankItem1 = [Int: RankItem]()
-    var rankItem2 = [Int: RankItem]()
-    var rankItem3 = [Int: RankItem]()
+    var rankItem = [Int: RankItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,25 +38,6 @@ class AllRankVC: UIViewController {
         
         DataService.instance.getAllRankingFor(userId: userId, friendsAllay: friendsAllay, favoritesAllay: favoritsAllay) { (returnRanking) in
             self.rankingArray = returnRanking.reversed()
-            
-            // Test
-//            for ranking in self.rankingArray {
-//                DataService.instance.getAllRankItemsFor(rankingKey: ranking.rankingKey, handler: { (returnRankItem) in
-//                    let rankItemArray = returnRankItem
-//
-//                    if rankItemArray.count >= 3 {
-//                        self.rankItem1[0] = rankItemArray[0]
-//                        self.rankItem1[1] = rankItemArray[1]
-//                        self.rankItem1[2] = rankItemArray[2]
-//                    } else if rankItemArray.count == 2 {
-//                        self.rankItem1[0] = rankItemArray[0]
-//                        self.rankItem1[1] = rankItemArray[1]
-//                    } else if rankItemArray.count == 1 {
-//                        self.rankItem1[0] = rankItemArray[0]
-//                    }
-//
-//                })
-//            }
 
             self.tableView.reloadData()
         }
@@ -91,30 +70,21 @@ extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
                 self.rankItemsArray = returnedRankItem
                 
                 if self.rankItemsArray.count >= 3 {
-                    self.rankItem1[0] = self.rankItemsArray[0]
-                    self.rankItem1[1] = self.rankItemsArray[1]
-                    self.rankItem1[2] = self.rankItemsArray[2]
+                    self.rankItem[0] = self.rankItemsArray[0]
+                    self.rankItem[1] = self.rankItemsArray[1]
+                    self.rankItem[2] = self.rankItemsArray[2]
                 } else if self.rankItemsArray.count == 2 {
-                    self.rankItem1[0] = self.rankItemsArray[0]
-                    self.rankItem1[1] = self.rankItemsArray[1]
+                    self.rankItem[0] = self.rankItemsArray[0]
+                    self.rankItem[1] = self.rankItemsArray[1]
                 } else if self.rankItemsArray.count == 1 {
-                    self.rankItem1[0] = self.rankItemsArray[0]
+                    self.rankItem[0] = self.rankItemsArray[0]
                 }
-//                self.rankItem1[0] = self.rankItemsArray[0]
-//                self.rankItem1[1] = self.rankItemsArray[1]
-//                self.rankItem1[2] = self.rankItemsArray[2]
+//                self.rankItem[0] = self.rankItemsArray[0]
+//                self.rankItem[1] = self.rankItemsArray[1]
+//                self.rankItem[2] = self.rankItemsArray[2]
                 
-                cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: self.nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItem1)
+                cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: self.nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItem)
             })
-            
-            
-            
-            
-//            DataService.instance.getAllRankItemsFor(rankingKey: self.rankingArray[indexPath.row].rankingKey) { (returnedRankItem) in
-//                self.rankItemsArray = returnedRankItem
-//
-//                cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: self.nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItemsArray)
-//            }
             
             
         }
