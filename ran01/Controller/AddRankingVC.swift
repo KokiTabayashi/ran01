@@ -70,7 +70,7 @@ class AddRankingVC: UIViewController {
                             // register official detail item information
                             DataService.instance.addRankingItemDetail(withRank: rankingItem.rank, title: rankingItem.title, explanation: rankingItem.explanation, image: rankingItem.image, withRankingKey: returnedOfficialRankingKey, addDetailComplete: { (success) in
                                 
-                                let allRankVC = self.storyboard?.instantiateViewController(withIdentifier: "AllRankVC")
+                                let allRankVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
                                 self.present(allRankVC!, animated: true, completion: nil)
                                 
                             })

@@ -27,8 +27,8 @@ class LoginVC: UIViewController {
                 
                 if success {
 //                    self.dismiss(animated: true, completion: nil)
-                    let AllRankVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
-                    self.present(AllRankVC!, animated: true, completion: nil)
+                    let allRankVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
+                    self.present(allRankVC!, animated: true, completion: nil)
                 } else {
                     print(String(describing: loginError?.localizedDescription))
                     self.errorMessageLbl.isHidden = false
