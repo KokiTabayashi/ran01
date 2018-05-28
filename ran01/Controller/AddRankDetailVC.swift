@@ -27,7 +27,7 @@ class AddRankDetailVC: UIViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        DataService.instance.getNumberOfItems(forRankingKey: rankingKey) { (numberOfItems) in
+        DataService.instance.getNumberOfItemsTmp(forRankingKey: rankingKey) { (numberOfItems) in
             self.numberOfItems = numberOfItems
             for i in 1...self.numberOfItems {
                 self.rankAllay.append(i)
@@ -42,8 +42,9 @@ class AddRankDetailVC: UIViewController {
     
     @IBAction func doneBtnWasPressed(_ sender: Any) {
         if nameOfItemTextField.text != nil && nameOfItemTextField.text != "" {
-            DataService.instance.addRankingItemDetail(withRank: rank, title: nameOfItemTextField.text!, explanation: explanationTextView.text, image: "", withRankingKey: rankingKey) { (success) in
+            DataService.instance.addRankingItemDetailTmp(withRank: rank, title: nameOfItemTextField.text!, explanation: explanationTextView.text, image: "", withRankingKey: rankingKey) { (success) in
                 self.performSegue(withIdentifier: "AddRankingVC", sender: self.rankingKey)
+//                self.performSegue(withIdentifier: "AddRankingVC", sender: nil)
             }
         }
     }

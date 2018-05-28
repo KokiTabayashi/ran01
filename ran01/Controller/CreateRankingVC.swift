@@ -36,12 +36,13 @@ class CreateRankingVC: UIViewController {
         if rankingNameTextField.text != nil && rankingNameTextField.text != "" {
             
             if let userID = Auth.auth().currentUser?.uid {
-                DataService.instance.registerRanking(withTitle: rankingNameTextField.text!, userId: userID, numberOfItems: numberOfItemsInRanking) { (success, rankingKey) in
+                
+                DataService.instance.registerRankingTmp(withTitle: rankingNameTextField.text!, userId: userID, numberOfItems: numberOfItemsInRanking) { (success, rankingKey) in
                     if success && rankingKey != "" {
-                        
+
                         let rankingKey: String = rankingKey
                         self.performSegue(withIdentifier: "AddRankDetailVC", sender: rankingKey)
-                        
+
                     } else {
                         self.errorMessageLbl.isHidden = false
                     }

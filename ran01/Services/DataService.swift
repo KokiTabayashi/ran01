@@ -17,7 +17,9 @@ class DataService {
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_RANKING = DB_BASE.child("ranking")
+    private var _REF_RANKING_TMP = DB_BASE.child("rankingTmp")
     private var _REF_ITEMS = DB_BASE.child("items")
+    private var _REF_ITEMS_TMP = DB_BASE.child("itemsTmp")
     private var _REF_COMMENTS = DB_BASE.child("comments")
     
     var REF_BASE: DatabaseReference {
@@ -32,13 +34,23 @@ class DataService {
         return _REF_RANKING
     }
     
+    var REF_RANKING_TMP: DatabaseReference {
+        return _REF_RANKING_TMP
+    }
+    
     var REF_ITEMS: DatabaseReference {
         return _REF_ITEMS
+    }
+    
+    var REF_ITEMS_TMP: DatabaseReference {
+        return _REF_ITEMS_TMP
     }
     
     var REF_COMMENTS: DatabaseReference {
         return _REF_COMMENTS
     }
+    
+    
     
     func getCurrentUserId() -> String {
         var userId: String = ""
@@ -77,11 +89,23 @@ class DataService {
     }
     
     func registerRanking(withTitle title: String, userId: String, numberOfItems: Int, registerRankingComplete: @escaping (_ status: Bool, _ key: String) -> ()) {
-        
+
         let dateAndTime = TimeService.instance.getDateAndTime()
         let rankingKey = REF_RANKING.childByAutoId().key
         let rankingInfo = ["title": title, "userId": userId, "dateAndTime": dateAndTime, "numberOfItems": numberOfItems] as [String : Any]
         let childUpdates = ["/ranking/\(rankingKey)": rankingInfo]
+
+        DB_BASE.updateChildValues(childUpdates)
+
+        registerRankingComplete(true, rankingKey)
+    }
+    
+    func registerRankingTmp(withTitle title: String, userId: String, numberOfItems: Int, registerRankingComplete: @escaping (_ status: Bool, _ key: String) -> ()) {
+        
+        let dateAndTime = TimeService.instance.getDateAndTime()
+        let rankingKey = REF_RANKING_TMP.childByAutoId().key
+        let rankingInfo = ["title": title, "userId": userId, "dateAndTime": dateAndTime, "numberOfItems": numberOfItems] as [String : Any]
+        let childUpdates = ["/rankingTmp/\(rankingKey)": rankingInfo]
         
         DB_BASE.updateChildValues(childUpdates)
         
@@ -91,6 +115,17 @@ class DataService {
     
     func getRankingTitle(forRankingKey key: String, handler: @escaping (_ rankingTitle: String) -> ()) {
         REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for ranking in rankingSnapshot {
+                if ranking.key == key {
+                    handler(ranking.childSnapshot(forPath: "title").value as! String)
+                }
+            }
+        }
+    }
+    
+    func getRankingTitleTmp(forRankingKey key: String, handler: @escaping (_ rankingTitle: String) -> ()) {
+        REF_RANKING_TMP.observeSingleEvent(of: .value) { (rankingSnapshot) in
             guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for ranking in rankingSnapshot {
                 if ranking.key == key {
@@ -111,11 +146,27 @@ class DataService {
         }
     }
     
+    func getNumberOfItemsTmp(forRankingKey key: String, handler: @escaping (_ numberOfItems: Int) -> ()) {
+        REF_RANKING_TMP.observeSingleEvent(of: .value) { (numberOfItemsSnapshot) in
+            guard let numberOfItemsSnapshot = numberOfItemsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for numberOfItems in numberOfItemsSnapshot {
+                if numberOfItems.key == key {
+                    handler(numberOfItems.childSnapshot(forPath: "numberOfItems").value as! Int)
+                }
+            }
+        }
+    }
+    
     func addRankingItemDetail(withRank rank: Int, title: String, explanation: String, image: String, withRankingKey rankingKey: String, addDetailComplete: @escaping (_ status: Bool) -> ()) {
         
         REF_ITEMS.child(rankingKey).childByAutoId().updateChildValues(["rank": rank, "title": title, "explanation": explanation, "image": image])
         addDetailComplete(true)
-
+    }
+    
+    func addRankingItemDetailTmp(withRank rank: Int, title: String, explanation: String, image: String, withRankingKey rankingKey: String, addDetailComplete: @escaping (_ status: Bool) -> ()) {
+        
+        REF_ITEMS_TMP.child(rankingKey).childByAutoId().updateChildValues(["rank": rank, "title": title, "explanation": explanation, "image": image])
+        addDetailComplete(true)
     }
     
     func getAllRankingFor(userId: String, friendsAllay: [String]?, favoritesAllay: [String]?, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
@@ -171,7 +222,29 @@ class DataService {
         }
     }
     
-    
+    func getAllRankItemsForTmp(rankingKey: String, handler: @escaping (_ rankingItemsArray: [RankItem]) -> ()) {
+        
+        var rankingItemsArray = [RankItem]()
+        
+        REF_ITEMS_TMP.child(rankingKey).observeSingleEvent(of: .value) { (rankingItemsSnapshot) in
+            
+            guard let rankingItemsSnapshot = rankingItemsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            let stars: [String] = []
+            
+            for rankingItem in rankingItemsSnapshot {
+                let rank = rankingItem.childSnapshot(forPath: "rank").value as! Int
+                let title = rankingItem.childSnapshot(forPath: "title").value as! String
+                let image = rankingItem.childSnapshot(forPath: "image").value as! String
+                let explanation = rankingItem.childSnapshot(forPath: "explanation").value as! String
+                // Need to think about solution here. Just commented out for now.
+                //                let stars = rankingItem.childSnapshot(forPath: "stars").value as! [String]
+                let rankItem = RankItem(rank: rank, title: title, image: image, explanation: explanation, stars: stars)
+                rankingItemsArray.append(rankItem)
+            }
+            handler(rankingItemsArray)
+        }
+    }
 
     
     

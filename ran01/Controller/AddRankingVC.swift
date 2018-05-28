@@ -35,23 +35,27 @@ class AddRankingVC: UIViewController {
     }
     
     func _getRankingTitle() {
-        DataService.instance.getRankingTitle(forRankingKey: rankingKey) { (returnedRankingTitle) in
+        DataService.instance.getRankingTitleTmp(forRankingKey: rankingKey) { (returnedRankingTitle) in
             self.rankingNameLbl.text = returnedRankingTitle
             self.tableView.reloadData()
         }
     }
 
     func _getAllRankItems() {
-        DataService.instance.getAllRankItemsFor(rankingKey: rankingKey) { (returnedRankItem) in
+        DataService.instance.getAllRankItemsForTmp(rankingKey: rankingKey) { (returnedRankItem) in
             self.rankItemsArray = returnedRankItem
             self.tableView.reloadData()
             
-            DataService.instance.getNumberOfItems(forRankingKey: self.rankingKey, handler: { (numberOfItems) in
+            DataService.instance.getNumberOfItemsTmp(forRankingKey: self.rankingKey, handler: { (numberOfItems) in
                 if self.rankItemsArray.count == numberOfItems {
                     self.addNextItemBtn.isHidden = true
                 }
             })
         }
+    }
+    
+    @IBAction func submitBtnWasPressed(_ sender: Any) {
+        
     }
     
     @IBAction func addNextItemBtnWasPressed(_ sender: Any) {

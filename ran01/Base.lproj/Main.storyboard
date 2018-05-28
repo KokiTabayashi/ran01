@@ -943,6 +943,9 @@
                                         <state key="normal" title="Submit">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="submitBtnWasPressed:" destination="ugA-Gf-gvW" eventType="touchUpInside" id="JHK-wJ-4Yl"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
