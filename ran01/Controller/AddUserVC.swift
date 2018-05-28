@@ -64,6 +64,10 @@ class AddUserVC: UIViewController {
         }
     }
     
+    @IBAction func screenWasTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

@@ -36,10 +36,15 @@ class LoginVC: UIViewController {
             }
         }
     }
+
     
     @IBAction func createBtnWasPressed(_ sender: Any) {
         let AddUserVC = storyboard?.instantiateViewController(withIdentifier: "AddUserVC")
         present(AddUserVC!, animated: true, completion: nil)
+    }
+    
+    @IBAction func screenWasTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {

@@ -261,6 +261,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sCx-7q-ml0" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="13W-pH-ILF"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="C5z-MG-4G2" secondAttribute="trailing" constant="16" id="1xd-X6-1i9"/>
@@ -892,6 +893,7 @@
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SfM-pB-1aq" firstAttribute="trailing" secondItem="XTR-Zi-h7d" secondAttribute="trailing" constant="32" id="F5k-V3-5ti"/>
                             <constraint firstItem="SfM-pB-1aq" firstAttribute="trailing" secondItem="5qZ-Jr-wdh" secondAttribute="trailing" constant="16" id="Fwf-XO-aBJ"/>
@@ -910,6 +912,9 @@
                             <constraint firstItem="XTR-Zi-h7d" firstAttribute="leading" secondItem="SfM-pB-1aq" secondAttribute="leading" constant="32" id="xMZ-g6-A6X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SfM-pB-1aq"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="B1s-gd-8BL" appends="YES" id="CgS-fJ-5xu"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="errorMessageLbl" destination="XTR-Zi-h7d" id="OEy-Kg-Bhe"/>
@@ -919,6 +924,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1V-1R-lJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="B1s-gd-8BL">
+                    <connections>
+                        <action selector="screenWasTapped:" destination="lLj-nM-dlE" id="IHD-BU-eqV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1849" y="-1380"/>
         </scene>
@@ -1168,8 +1178,31 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="60C-0I-RhQ">
                                 <rect key="frame" x="16" y="79" width="343" height="568"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hXW-5D-wLz">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="76"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sig-od-isz">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="a6i-pJ-Z6M"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f9f-6V-5Tn">
+                                                <rect key="frame" x="0.0" y="40" width="343" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="yqv-PY-kjc"/>
+                                                </constraints>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6Na-8A-oqt">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="184"/>
+                                        <rect key="frame" x="0.0" y="100" width="343" height="184"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zIX-TG-xCm">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="184"/>
@@ -1218,29 +1251,6 @@
                                             <constraint firstAttribute="trailing" secondItem="ZDx-v3-2Pi" secondAttribute="trailing" id="UNN-KA-ioA"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hXW-5D-wLz">
-                                        <rect key="frame" x="0.0" y="208" width="343" height="76"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sig-od-isz">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="a6i-pJ-Z6M"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f9f-6V-5Tn">
-                                                <rect key="frame" x="0.0" y="40" width="343" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="yqv-PY-kjc"/>
-                                                </constraints>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="70j-AT-cr1">
                                         <rect key="frame" x="0.0" y="308" width="343" height="260"/>
                                         <subviews>
@@ -1263,6 +1273,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wd0-NH-m7S" firstAttribute="leading" secondItem="7O9-ef-PPS" secondAttribute="leading" constant="16" id="4KC-DD-Kw5"/>
                             <constraint firstItem="7O9-ef-PPS" firstAttribute="bottom" secondItem="60C-0I-RhQ" secondAttribute="bottom" constant="20" id="4V3-Va-dvH"/>
@@ -1273,6 +1284,9 @@
                             <constraint firstItem="60C-0I-RhQ" firstAttribute="top" secondItem="wd0-NH-m7S" secondAttribute="bottom" constant="16" id="hWA-gv-v4g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7O9-ef-PPS"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="W8S-IX-1uC" appends="YES" id="mbq-qm-mVf"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="explanationTextView" destination="aaA-hi-r5X" id="Ulp-KY-TcR"/>
@@ -1283,6 +1297,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRs-Fd-CKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="W8S-IX-1uC">
+                    <connections>
+                        <action selector="screenWasTapped:" destination="CJv-UD-RYV" id="vNo-Au-JvZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2758" y="-1380"/>
         </scene>
@@ -1729,6 +1748,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sKG-ec-Lkw" firstAttribute="leading" secondItem="H0X-ZM-Eev" secondAttribute="leading" id="0lG-I9-MT0"/>
                             <constraint firstItem="sKG-ec-Lkw" firstAttribute="trailing" secondItem="H0X-ZM-Eev" secondAttribute="trailing" id="1PY-uO-V5o"/>
@@ -1761,6 +1781,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Cr-TG-UjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="UDp-kc-PHK">
+                    <connections>
+                        <action selector="screenWasTapped:" destination="YK6-HO-NLv" id="HzR-Zi-5gg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-975.20000000000005" y="-0.44977511244377816"/>
         </scene>
@@ -1861,6 +1886,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="217-lr-qF5" firstAttribute="leading" secondItem="EwE-NV-ugj" secondAttribute="leading" id="3da-LY-dS8"/>
                             <constraint firstItem="str-gn-PBM" firstAttribute="top" secondItem="frt-WL-Oee" secondAttribute="bottom" constant="40" id="7sm-ki-QGa"/>
@@ -1893,6 +1919,9 @@
                             <constraint firstItem="frt-WL-Oee" firstAttribute="top" secondItem="281-xr-pEN" secondAttribute="top" constant="8" id="yFA-aZ-Flr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="281-xr-pEN"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fon-Pj-OR5" appends="YES" id="P7v-Jk-Lsk"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="EwE-NV-ugj" id="FAO-jW-w0M"/>
@@ -1903,6 +1932,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhw-Uh-OOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="fon-Pj-OR5">
+                    <connections>
+                        <action selector="screenWasTapped:" destination="WLW-s3-qpq" id="5NN-R2-dqt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-975.20000000000005" y="805.54722638680664"/>
         </scene>
@@ -1940,6 +1974,6 @@
         <image name="starempty" width="38" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f5E-bQ-Tex"/>
+        <segue reference="CfG-Ug-d9b"/>
     </inferredMetricsTieBreakers>
 </document>
