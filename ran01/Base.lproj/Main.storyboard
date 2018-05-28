@@ -1080,6 +1080,7 @@
                         <viewLayoutGuide key="safeArea" id="s3A-3I-uWi"/>
                     </view>
                     <connections>
+                        <outlet property="addNextItemBtn" destination="Aii-fd-ScD" id="UGZ-8y-4X2"/>
                         <outlet property="rankingNameLbl" destination="vv6-ED-Wiv" id="3Nf-mD-h5q"/>
                         <outlet property="tableView" destination="yU0-5l-pn6" id="W9q-YX-Q2d"/>
                     </connections>
@@ -1915,7 +1916,6 @@
         <image name="starempty" width="38" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BIL-kG-a7E"/>
         <segue reference="f5E-bQ-Tex"/>
     </inferredMetricsTieBreakers>
 </document>
