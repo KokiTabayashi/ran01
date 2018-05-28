@@ -14,7 +14,6 @@ class AddRankingVC: UIViewController {
     @IBOutlet weak var rankingNameLbl: UILabel!
     
     var rankingKey: String = ""
-//    var numberOfRowInTableView = 10
     var rankItemsArray: [RankItem] = []
     
     override func viewDidLoad() {
@@ -35,20 +34,6 @@ class AddRankingVC: UIViewController {
             self.rankItemsArray = returnedRankItem
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        DataService.instance.getRankingTitle(forRankingKey: rankingKey) { (returnedRankingTitle) in
-//            self.rankingNameLbl.text = returnedRankingTitle
-//        }
-//
-//        DataService.instance.getAllRankItemsFor(rankingKey: rankingKey) { (returnedRankItem) in
-//            self.rankItemsArray = returnedRankItem
-//        }
-//    }
-    
-    
     
     
     

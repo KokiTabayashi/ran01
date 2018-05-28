@@ -15,11 +15,11 @@ class AddRankDetailVC: UIViewController {
     @IBOutlet weak var nameOfItemTextField: UITextField!
     @IBOutlet weak var explanationTextView: UITextView!
     
-//    let rankAllay = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-    let rankAllay = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var rankAllay: [Int] = []
     
     var rankingKey: String = ""
     var rank: Int = 1
+    var numberOfItems = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,13 @@ class AddRankDetailVC: UIViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         
-//        print("rankingKey:")
-//        print(rankingKey)
+        DataService.instance.getNumberOfItems(forRankingKey: rankingKey) { (numberOfItems) in
+            self.numberOfItems = numberOfItems
+        }
+        
+        for i in 1...numberOfItems {
+            rankAllay.append(i)
+        }
     }
     
     @IBAction func photoBtnWasPressed(_ sender: Any) {
@@ -38,7 +43,6 @@ class AddRankDetailVC: UIViewController {
     @IBAction func doneBtnWasPressed(_ sender: Any) {
         if nameOfItemTextField.text != nil && nameOfItemTextField.text != "" {
             DataService.instance.addRankingItemDetail(withRank: rank, title: nameOfItemTextField.text!, explanation: explanationTextView.text, image: "", withRankingKey: rankingKey) { (success) in
-//                self.dismiss(animated: true, completion: nil)
                 self.performSegue(withIdentifier: "AddRankingVC", sender: self.rankingKey)
             }
         }
@@ -66,7 +70,6 @@ extension AddRankDetailVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return rankAllay[row]
         return "\(rankAllay[row])"
     }
     

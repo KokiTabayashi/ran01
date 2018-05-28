@@ -14,16 +14,29 @@ class CreateRankingVC: UIViewController {
     @IBOutlet weak var rankingNameTextField: UITextField!
     @IBOutlet weak var errorMessageLbl: UILabel!
     
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    var numberOfItemsInRanking = 10
+    var numberSelection: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorMessageLbl.isHidden = true
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+
+        for i in 1...100 {
+            numberSelection.append(i)
+        }
+        pickerView.selectRow(9, inComponent: 0, animated: true)
     }
     
     @IBAction func createBtnWasPressed(_ sender: Any) {
         if rankingNameTextField.text != nil && rankingNameTextField.text != "" {
             
             if let userID = Auth.auth().currentUser?.uid {
-                DataService.instance.registerRanking(withTitle: rankingNameTextField.text!, userId: userID) { (success, rankingKey) in
+                DataService.instance.registerRanking(withTitle: rankingNameTextField.text!, userId: userID, numberOfItems: numberOfItemsInRanking) { (success, rankingKey) in
                     if success && rankingKey != "" {
                         
                         let rankingKey: String = rankingKey
@@ -45,5 +58,26 @@ class CreateRankingVC: UIViewController {
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CreateRankingVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 100
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(numberSelection[row])"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let choice = self.pickerView(pickerView, titleForRow: pickerView.selectedRow(inComponent: 0), forComponent: 0)
+        
+        numberOfItemsInRanking = Int(choice!)!
     }
 }

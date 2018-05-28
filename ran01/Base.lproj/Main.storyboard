@@ -855,21 +855,36 @@
                                 </subviews>
                             </stackView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="error: failed to create a ranking" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTR-Zi-h7d">
-                                <rect key="frame" x="32" y="180.5" width="311" height="23.5"/>
+                                <rect key="frame" x="32" y="435" width="311" height="23.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of the items in the ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qZ-Jr-wdh">
+                                <rect key="frame" x="16" y="170.5" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vf4-go-OkL">
+                                <rect key="frame" x="50" y="199" width="275" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SfM-pB-1aq" firstAttribute="trailing" secondItem="XTR-Zi-h7d" secondAttribute="trailing" constant="32" id="F5k-V3-5ti"/>
+                            <constraint firstItem="SfM-pB-1aq" firstAttribute="trailing" secondItem="5qZ-Jr-wdh" secondAttribute="trailing" constant="16" id="Fwf-XO-aBJ"/>
+                            <constraint firstItem="XTR-Zi-h7d" firstAttribute="top" secondItem="Vf4-go-OkL" secondAttribute="bottom" constant="20" id="HLK-MB-uB8"/>
                             <constraint firstItem="U0f-g4-bbd" firstAttribute="leading" secondItem="SfM-pB-1aq" secondAttribute="leading" constant="16" id="OQp-n3-wDP"/>
                             <constraint firstItem="viz-D2-VXu" firstAttribute="leading" secondItem="SfM-pB-1aq" secondAttribute="leading" constant="16" id="WER-G8-d41"/>
-                            <constraint firstItem="XTR-Zi-h7d" firstAttribute="top" secondItem="U0f-g4-bbd" secondAttribute="bottom" constant="30" id="Y2X-a0-APK"/>
+                            <constraint firstItem="SfM-pB-1aq" firstAttribute="trailing" secondItem="Vf4-go-OkL" secondAttribute="trailing" constant="50" id="aeK-4p-xce"/>
                             <constraint firstItem="viz-D2-VXu" firstAttribute="top" secondItem="SfM-pB-1aq" secondAttribute="top" constant="8" id="f7i-VZ-mFp"/>
                             <constraint firstItem="SfM-pB-1aq" firstAttribute="trailing" secondItem="viz-D2-VXu" secondAttribute="trailing" constant="16" id="gxf-hc-hlV"/>
                             <constraint firstItem="SfM-pB-1aq" firstAttribute="trailing" secondItem="U0f-g4-bbd" secondAttribute="trailing" constant="16" id="hXb-Zn-KAd"/>
+                            <constraint firstItem="5qZ-Jr-wdh" firstAttribute="leading" secondItem="SfM-pB-1aq" secondAttribute="leading" constant="16" id="k5C-0c-vcN"/>
+                            <constraint firstItem="Vf4-go-OkL" firstAttribute="leading" secondItem="SfM-pB-1aq" secondAttribute="leading" constant="50" id="m9M-f2-5nH"/>
+                            <constraint firstItem="5qZ-Jr-wdh" firstAttribute="top" secondItem="U0f-g4-bbd" secondAttribute="bottom" constant="20" id="rkl-ZA-knk"/>
+                            <constraint firstItem="Vf4-go-OkL" firstAttribute="top" secondItem="5qZ-Jr-wdh" secondAttribute="bottom" constant="8" id="t57-ys-Mx4"/>
                             <constraint firstItem="U0f-g4-bbd" firstAttribute="top" secondItem="viz-D2-VXu" secondAttribute="bottom" constant="28" id="uIL-K2-FAV"/>
                             <constraint firstItem="XTR-Zi-h7d" firstAttribute="leading" secondItem="SfM-pB-1aq" secondAttribute="leading" constant="32" id="xMZ-g6-A6X"/>
                         </constraints>
@@ -877,6 +892,7 @@
                     </view>
                     <connections>
                         <outlet property="errorMessageLbl" destination="XTR-Zi-h7d" id="OEy-Kg-Bhe"/>
+                        <outlet property="pickerView" destination="Vf4-go-OkL" id="MNH-Yk-cdF"/>
                         <outlet property="rankingNameTextField" destination="OPX-zZ-4TI" id="JVT-A1-Qu5"/>
                         <segue destination="CJv-UD-RYV" kind="presentation" identifier="AddRankDetailVC" id="CfG-Ug-d9b"/>
                     </connections>

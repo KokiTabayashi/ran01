@@ -76,11 +76,11 @@ class DataService {
         }
     }
     
-    func registerRanking(withTitle title: String, userId: String, registerRankingComplete: @escaping (_ status: Bool, _ key: String) -> ()) {
+    func registerRanking(withTitle title: String, userId: String, numberOfItems: Int, registerRankingComplete: @escaping (_ status: Bool, _ key: String) -> ()) {
         
         let dateAndTime = TimeService.instance.getDateAndTime()
         let rankingKey = REF_RANKING.childByAutoId().key
-        let rankingInfo = ["title": title, "userId": userId, "dateAndTime": dateAndTime]
+        let rankingInfo = ["title": title, "userId": userId, "dateAndTime": dateAndTime, "numberOfItems": numberOfItems] as [String : Any]
         let childUpdates = ["/ranking/\(rankingKey)": rankingInfo]
         
         DB_BASE.updateChildValues(childUpdates)
@@ -95,6 +95,17 @@ class DataService {
             for ranking in rankingSnapshot {
                 if ranking.key == key {
                     handler(ranking.childSnapshot(forPath: "title").value as! String)
+                }
+            }
+        }
+    }
+    
+    func getNumberOfItems(forRankingKey key: String, handler: @escaping (_ numberOfItems: Int) -> ()) {
+        REF_RANKING.observeSingleEvent(of: .value) { (numberOfItemsSnapshot) in
+            guard let numberOfItemsSnapshot = numberOfItemsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for numberOfItems in numberOfItemsSnapshot {
+                if numberOfItems.key == key {
+                    handler(numberOfItems.childSnapshot(forPath: "numberOfItems").value as! Int)
                 }
             }
         }
