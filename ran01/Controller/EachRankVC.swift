@@ -10,14 +10,57 @@ import UIKit
 
 class EachRankVC: UIViewController {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var usernameLbl: UILabel!
+    @IBOutlet weak var createdDateLbl: UILabel!
+    @IBOutlet weak var rankingExplanationLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var numberOfStarsLbl: UILabel!
+    @IBOutlet weak var numberOfCommentsLbl: UIButton!
     
-    
+    var rankingKey: String = ""
+    var rankingTitle: String = ""
+    var username: String = ""
+    var rankItemsArray: [RankItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        _setTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DataService.instance.getRankingInfo(forRankingKey: rankingKey) { (returnedRankingTitle, returnedUserId, returnedNumberOfItems, returnedCreatedDate) in
+            self.rankingTitle = returnedRankingTitle
+            DataService.instance.getUsername(forUID: returnedUserId, handler: { (returnedUsername) in
+                self.username = returnedUsername
+                
+                self.titleLbl.text = returnedRankingTitle
+                self.usernameLbl.text = returnedUsername
+                self.createdDateLbl.text = returnedCreatedDate
+                self.rankingExplanationLbl.text = "-"
+                
+                self.tableView.reloadData()
+            })
+        }
+        
+        DataService.instance.getAllRankItemsFor(rankingKey: rankingKey) { (returnedRankItem) in
+            self.rankItemsArray = returnedRankItem
+            self.rankItemsArray.sort(by: {$0.rank < $1.rank})
+            self.tableView.reloadData()
+        }
+    }
+    
+    func _setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    @IBAction func starBtnWasPressed(_ sender: Any) {
+    }
+    
+    @IBAction func commentBtnWasPressed(_ sender: Any) {
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
@@ -31,11 +74,13 @@ extension EachRankVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return rankItemsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "eachRankCell") as? EachRankCell else { return UITableViewCell() }
+        
+        cell.configureCell(rank: rankItemsArray[indexPath.row].rank, title: rankItemsArray[indexPath.row].title, itemImage: "-", explanation: "-")
         
         return cell
     }

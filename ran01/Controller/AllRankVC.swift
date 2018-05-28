@@ -69,6 +69,8 @@ extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
             DataService.instance.getAllRankItemsFor(rankingKey: self.rankingArray[indexPath.row].rankingKey, handler: { (returnedRankItem) in
                 self.rankItemsArray = returnedRankItem
                 
+                self.rankItemsArray.sort(by: {$0.rank < $1.rank})
+                
                 if self.rankItemsArray.count >= 3 {
                     self.rankItem[0] = self.rankItemsArray[0]
                     self.rankItem[1] = self.rankItemsArray[1]
@@ -93,6 +95,12 @@ extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "EachRankVC", sender: nil)
+        performSegue(withIdentifier: "EachRankVC", sender: rankingArray[indexPath.row].rankingKey)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let eachRankVC = segue.destination as? EachRankVC {
+            eachRankVC.rankingKey = sender as! String
+        }
     }
 }

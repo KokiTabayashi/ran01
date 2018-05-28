@@ -135,6 +135,17 @@ class DataService {
         }
     }
     
+    func getRankingInfo(forRankingKey key: String, handler: @escaping (_ rankingTitle: String, _ userId: String, _ numberOfItems: Int, _ createdDate: String) -> ()) {
+        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for ranking in rankingSnapshot {
+                if ranking.key == key {
+                    handler(ranking.childSnapshot(forPath: "title").value as! String, ranking.childSnapshot(forPath: "userId").value as! String, ranking.childSnapshot(forPath: "numberOfItems").value as! Int, ranking.childSnapshot(forPath: "dateAndTime").value as! String)
+                }
+            }
+        }
+    }
+    
     func getRankingInfoTmp(forRankingKey key: String, handler: @escaping (_ rankingTitle: String, _ userId: String, _ numberOfItems: Int) -> ()) {
         REF_RANKING_TMP.observeSingleEvent(of: .value) { (rankingSnapshot) in
             guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
