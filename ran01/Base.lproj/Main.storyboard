@@ -951,17 +951,17 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="explan about the new ranking ..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PbF-r7-Bom">
-                                <rect key="frame" x="16" y="517" width="343" height="130"/>
+                                <rect key="frame" x="16" y="567" width="343" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="mg3-ua-exb"/>
+                                    <constraint firstAttribute="height" constant="80" id="mg3-ua-exb"/>
                                 </constraints>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yU0-5l-pn6">
-                                <rect key="frame" x="16" y="114" width="343" height="395"/>
+                                <rect key="frame" x="16" y="114" width="343" height="397"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addRankCell" rowHeight="150" id="zsa-sy-dio" customClass="AddRankItemCell" customModule="ran01" customModuleProvider="target">
@@ -1046,21 +1046,35 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aii-fd-ScD">
+                                <rect key="frame" x="16" y="519" width="343" height="36"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Add next item ...">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNextItemBtnWasPressed:" destination="ugA-Gf-gvW" eventType="touchUpInside" id="65O-mE-qsm"/>
+                                    <segue destination="CJv-UD-RYV" kind="presentation" identifier="AddRankDetailVC" id="f5E-bQ-Tex"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="s3A-3I-uWi" firstAttribute="trailing" secondItem="yU0-5l-pn6" secondAttribute="trailing" constant="16" id="1gw-YF-Bb5"/>
                             <constraint firstItem="LJY-zu-2bX" firstAttribute="top" secondItem="s3A-3I-uWi" secondAttribute="top" constant="8" id="Kgw-MQ-NiP"/>
+                            <constraint firstItem="Aii-fd-ScD" firstAttribute="top" secondItem="yU0-5l-pn6" secondAttribute="bottom" constant="8" id="Ofn-ul-zxu"/>
                             <constraint firstItem="vv6-ED-Wiv" firstAttribute="leading" secondItem="s3A-3I-uWi" secondAttribute="leading" constant="16" id="SaJ-wT-YOm"/>
                             <constraint firstItem="s3A-3I-uWi" firstAttribute="bottom" secondItem="PbF-r7-Bom" secondAttribute="bottom" constant="20" id="X35-ou-JBU"/>
                             <constraint firstItem="LJY-zu-2bX" firstAttribute="leading" secondItem="s3A-3I-uWi" secondAttribute="leading" constant="16" id="hFz-Xl-NgB"/>
                             <constraint firstItem="s3A-3I-uWi" firstAttribute="trailing" secondItem="LJY-zu-2bX" secondAttribute="trailing" constant="16" id="hzY-di-7ky"/>
+                            <constraint firstItem="Aii-fd-ScD" firstAttribute="leading" secondItem="s3A-3I-uWi" secondAttribute="leading" constant="16" id="i3H-WO-iQ2"/>
+                            <constraint firstItem="s3A-3I-uWi" firstAttribute="trailing" secondItem="Aii-fd-ScD" secondAttribute="trailing" constant="16" id="iMD-B1-rPz"/>
                             <constraint firstItem="s3A-3I-uWi" firstAttribute="trailing" secondItem="PbF-r7-Bom" secondAttribute="trailing" constant="16" id="lUP-gk-npn"/>
                             <constraint firstItem="yU0-5l-pn6" firstAttribute="top" secondItem="vv6-ED-Wiv" secondAttribute="bottom" constant="8" id="mFF-8b-NXf"/>
                             <constraint firstItem="yU0-5l-pn6" firstAttribute="leading" secondItem="s3A-3I-uWi" secondAttribute="leading" constant="16" id="nwf-Cv-woc"/>
-                            <constraint firstItem="PbF-r7-Bom" firstAttribute="top" secondItem="yU0-5l-pn6" secondAttribute="bottom" constant="8" id="q2o-h4-7NF"/>
                             <constraint firstItem="vv6-ED-Wiv" firstAttribute="top" secondItem="LJY-zu-2bX" secondAttribute="bottom" constant="8" id="qSV-xZ-z5x"/>
                             <constraint firstItem="s3A-3I-uWi" firstAttribute="trailing" secondItem="vv6-ED-Wiv" secondAttribute="trailing" constant="16" id="tGq-ng-SQB"/>
+                            <constraint firstItem="PbF-r7-Bom" firstAttribute="top" secondItem="Aii-fd-ScD" secondAttribute="bottom" constant="12" id="viP-1B-l2c"/>
                             <constraint firstItem="PbF-r7-Bom" firstAttribute="leading" secondItem="s3A-3I-uWi" secondAttribute="leading" constant="16" id="ycM-KK-XXa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s3A-3I-uWi"/>
@@ -1072,7 +1086,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSc-70-ZCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2758" y="-2138"/>
+            <point key="canvasLocation" x="3796" y="-1380"/>
         </scene>
         <!--Add Rank DetailVC-->
         <scene sceneID="6MI-fr-Ed0">
@@ -1113,7 +1127,7 @@
                                             <constraint firstAttribute="width" constant="50" id="13h-jh-QIq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                        <state key="normal" title="Done">
+                                        <state key="normal" title="Add">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -1900,4 +1914,8 @@
         <image name="songs_icon" width="32" height="32"/>
         <image name="starempty" width="38" height="36"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BIL-kG-a7E"/>
+        <segue reference="f5E-bQ-Tex"/>
+    </inferredMetricsTieBreakers>
 </document>

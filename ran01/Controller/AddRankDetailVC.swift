@@ -19,7 +19,7 @@ class AddRankDetailVC: UIViewController {
     
     var rankingKey: String = ""
     var rank: Int = 1
-    var numberOfItems = 10
+    var numberOfItems = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +29,10 @@ class AddRankDetailVC: UIViewController {
         
         DataService.instance.getNumberOfItems(forRankingKey: rankingKey) { (numberOfItems) in
             self.numberOfItems = numberOfItems
-        }
-        
-        for i in 1...numberOfItems {
-            rankAllay.append(i)
+            for i in 1...self.numberOfItems {
+                self.rankAllay.append(i)
+            }
+            self.pickerView.reloadAllComponents()
         }
     }
     

@@ -38,8 +38,19 @@ class AddRankingVC: UIViewController {
     
     
     
+    @IBAction func addNextItemBtnWasPressed(_ sender: Any) {
+        performSegue(withIdentifier: "AddRankDetailVC", sender: nil)
+//        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let addRankDetailVC = segue.destination as? AddRankDetailVC {
+            addRankDetailVC.rankingKey = rankingKey
+        }
     }
 }
 
