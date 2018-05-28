@@ -44,7 +44,6 @@ class AddRankDetailVC: UIViewController {
         if nameOfItemTextField.text != nil && nameOfItemTextField.text != "" {
             DataService.instance.addRankingItemDetailTmp(withRank: rank, title: nameOfItemTextField.text!, explanation: explanationTextView.text, image: "", withRankingKey: rankingKey) { (success) in
                 self.performSegue(withIdentifier: "AddRankingVC", sender: self.rankingKey)
-//                self.performSegue(withIdentifier: "AddRankingVC", sender: nil)
             }
         }
     }
@@ -78,7 +77,6 @@ extension AddRankDetailVC: UIPickerViewDelegate, UIPickerViewDataSource {
         let choice = self.pickerView(pickerView, titleForRow: pickerView.selectedRow(inComponent: 0), forComponent: 0)
         
         rank = Int(choice!)!
-        print("\(choice!)")
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {

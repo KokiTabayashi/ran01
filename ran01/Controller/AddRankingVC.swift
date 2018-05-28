@@ -56,6 +56,29 @@ class AddRankingVC: UIViewController {
     
     @IBAction func submitBtnWasPressed(_ sender: Any) {
         
+        // get temp registered Ranking information
+        DataService.instance.getRankingInfoTmp(forRankingKey: rankingKey) { (returnedRankingTitle, returnedUserId, returnedNumberOfItems) in
+            
+            // register official information
+            DataService.instance.registerRanking(withTitle: returnedRankingTitle, userId: returnedUserId, numberOfItems: returnedNumberOfItems, registerRankingComplete: { (success, returnedOfficialRankingKey) in
+                
+                if success {
+                    // get temp detail item information
+                    DataService.instance.getAllRankItemsForTmp(rankingKey: self.rankingKey, handler: { (returnedRankingItemsArray) in
+                        for rankingItem in returnedRankingItemsArray {
+                            
+                            // register official detail item information
+                            DataService.instance.addRankingItemDetail(withRank: rankingItem.rank, title: rankingItem.title, explanation: rankingItem.explanation, image: rankingItem.image, withRankingKey: returnedOfficialRankingKey, addDetailComplete: { (success) in
+                                
+                                let allRankVC = self.storyboard?.instantiateViewController(withIdentifier: "AllRankVC")
+                                self.present(allRankVC!, animated: true, completion: nil)
+                                
+                            })
+                        }
+                    })
+                }
+            })
+        }
     }
     
     @IBAction func addNextItemBtnWasPressed(_ sender: Any) {
