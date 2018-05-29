@@ -38,17 +38,31 @@ class AllRankingItemCell: UITableViewCell {
         
         
         if let rank = rankItemDetail[0]?.rank {
-            firstRankNumberLbl.text = "\(rank)"
+            if rank == 0 {
+                firstRankNumberLbl.text = "-"
+            } else {
+                firstRankNumberLbl.text = "\(rank)"
+            }
         } else {
             firstRankNumberLbl.text = "-"
         }
+        
         if let rank = rankItemDetail[1]?.rank {
-            secondRankNumberLbl.text = "\(rank)"
+            if rank == 0 {
+                secondRankNumberLbl.text = "-"
+            } else {
+                secondRankNumberLbl.text = "\(rank)"
+            }
         } else {
             secondRankNumberLbl.text = "-"
         }
+        
         if let rank = rankItemDetail[2]?.rank {
-            thirdRankNumberLbl.text = "\(rank)"
+            if rank == 0 {
+                thirdRankNumberLbl.text = "-"
+            } else {
+                thirdRankNumberLbl.text = "\(rank)"
+            }
         } else {
             thirdRankNumberLbl.text = "-"
         }
