@@ -28,17 +28,20 @@ class AllRankVC: UIViewController {
         
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
         
-        let userId = DataService.instance.getCurrentUserId()
+//        let userId = DataService.instance.getCurrentUserId()
         
         let friendsAllay: [String] = []
         let favoritsAllay: [String] = []
         
-        DataService.instance.getAllRankingFor(userId: userId, friendsAllay: friendsAllay, favoritesAllay: favoritsAllay) { (returnRanking) in
-            self.rankingArray = returnRanking.reversed()
-
+        DataService.instance.getCurrentUserId { (userId) in
+            DataService.instance.getAllRankingFor(userId: userId, friendsAllay: friendsAllay, favoritesAllay: favoritsAllay) { (returnRanking) in
+                self.rankingArray = returnRanking.reversed()
+                
+                self.tableView.reloadData()
+            }
             self.tableView.reloadData()
         }
     }
@@ -60,37 +63,29 @@ extension AllRankVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        DataService.instance.getUsername(forUID: rankingArray[indexPath.row].userId) { (nameOfRankingOwner) in
-            self.nameOfRankingOwner = nameOfRankingOwner
+        DataService.instance.getAllRankItemsAndUsernameFor(rankingKey: self.rankingArray[indexPath.row].rankingKey, uid: rankingArray[indexPath.row].userId, handler: { (returnedRankItem, returnedUsername) in
+            self.rankItemsArray = returnedRankItem
+            self.nameOfRankingOwner = returnedUsername
             
+            self.rankItemsArray.sort(by: {$0.rank < $1.rank})
             
+            if self.rankItemsArray.count >= 3 {
+                self.rankItem[0] = self.rankItemsArray[0]
+                self.rankItem[1] = self.rankItemsArray[1]
+                self.rankItem[2] = self.rankItemsArray[2]
+            } else if self.rankItemsArray.count == 2 {
+                self.rankItem[0] = self.rankItemsArray[0]
+                self.rankItem[1] = self.rankItemsArray[1]
+            } else if self.rankItemsArray.count == 1 {
+                self.rankItem[0] = self.rankItemsArray[0]
+            }
+            //                self.rankItem[0] = self.rankItemsArray[0]
+            //                self.rankItem[1] = self.rankItemsArray[1]
+            //                self.rankItem[2] = self.rankItemsArray[2]
             
-            // Test
-            DataService.instance.getAllRankItemsFor(rankingKey: self.rankingArray[indexPath.row].rankingKey, handler: { (returnedRankItem) in
-                self.rankItemsArray = returnedRankItem
-                
-                self.rankItemsArray.sort(by: {$0.rank < $1.rank})
-                
-                if self.rankItemsArray.count >= 3 {
-                    self.rankItem[0] = self.rankItemsArray[0]
-                    self.rankItem[1] = self.rankItemsArray[1]
-                    self.rankItem[2] = self.rankItemsArray[2]
-                } else if self.rankItemsArray.count == 2 {
-                    self.rankItem[0] = self.rankItemsArray[0]
-                    self.rankItem[1] = self.rankItemsArray[1]
-                } else if self.rankItemsArray.count == 1 {
-                    self.rankItem[0] = self.rankItemsArray[0]
-                }
-//                self.rankItem[0] = self.rankItemsArray[0]
-//                self.rankItem[1] = self.rankItemsArray[1]
-//                self.rankItem[2] = self.rankItemsArray[2]
-                
-                cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: self.nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItem)
-            })
-            
-            
-        }
-        
+            cell.configureCell(title: self.rankingArray[indexPath.row].title, nameOfRankingOwner: self.nameOfRankingOwner, dateRankingWasCreated: self.rankingArray[indexPath.row].date, profileOfOwner: "1", fried: "1", rankItemDetail: self.rankItem)
+        })
+
         return cell
     }
     

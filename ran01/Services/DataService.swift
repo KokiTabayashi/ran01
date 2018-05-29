@@ -52,15 +52,18 @@ class DataService {
     
     
     
-    func getCurrentUserId() -> String {
-        var userId: String = ""
-        if let Id = Auth.auth().currentUser?.uid {
-            userId = Id
-        }
-        return userId
+//    func getCurrentUserId() -> String {
+//        var userId: String = ""
+//        if let Id = Auth.auth().currentUser?.uid {
+//            userId = Id
+//        }
+//        return userId
+//    }
+    
+    func getCurrentUserId(handler: @escaping (_ userId: String) -> ()) {
+        guard let userId: String = Auth.auth().currentUser?.uid else { return }
+        handler(userId)
     }
-    
-    
     
     func createDBUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
@@ -217,9 +220,6 @@ class DataService {
         }
     }
     
-    
-    
-    
     func getAllRankItemsFor(rankingKey: String, handler: @escaping (_ rankingItemsArray: [RankItem]) -> ()) {
         
         var rankingItemsArray = [RankItem]()
@@ -241,6 +241,39 @@ class DataService {
                 rankingItemsArray.append(rankItem)
             }
             handler(rankingItemsArray)
+        }
+    }
+    
+    func getAllRankItemsAndUsernameFor(rankingKey: String, uid: String, handler: @escaping (_ rankingItemsArray: [RankItem], _ username: String) -> ()) {
+        
+        var rankingItemsArray = [RankItem]()
+        
+        REF_ITEMS.child(rankingKey).observeSingleEvent(of: .value) { (rankingItemsSnapshot) in
+            
+            guard let rankingItemsSnapshot = rankingItemsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            let stars: [String] = []
+            
+            for rankingItem in rankingItemsSnapshot {
+                let rank = rankingItem.childSnapshot(forPath: "rank").value as! Int
+                let title = rankingItem.childSnapshot(forPath: "title").value as! String
+                let image = rankingItem.childSnapshot(forPath: "image").value as! String
+                let explanation = rankingItem.childSnapshot(forPath: "explanation").value as! String
+                // Need to think about solution here. Just commented out for now.
+                //                let stars = rankingItem.childSnapshot(forPath: "stars").value as! [String]
+                let rankItem = RankItem(rank: rank, title: title, image: image, explanation: explanation, stars: stars)
+                rankingItemsArray.append(rankItem)
+            }
+            
+            
+            self.REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+                guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+                for user in userSnapshot {
+                    if user.key == uid {
+                        handler(rankingItemsArray, user.childSnapshot(forPath: "username").value as! String)
+                    }
+                }
+            }
         }
     }
     
