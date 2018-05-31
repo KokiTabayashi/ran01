@@ -33,6 +33,8 @@ extension PropertyVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "propertyTableCell") as? PropertyCell {
             let property = PropertyService.instance.getProperties()[indexPath.row]
+            
+            // Set both Segue Identifier and PropertyService
             cell.updateViews(property: property)
             return cell
         }

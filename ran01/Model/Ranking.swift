@@ -35,7 +35,7 @@ class Ranking {
     }
     
     var explanation: String {
-        return explanation
+        return _explanation
     }
     
     var itemsId: [String] {
