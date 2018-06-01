@@ -13,7 +13,7 @@ class PropertyService {
     
     private let properties = [
         Property(propertyItem: "Me"),
-        Property(propertyItem: "Friends"),
+        Property(propertyItem: "Find Friends"),
         Property(propertyItem: "Logout")
     ]
     

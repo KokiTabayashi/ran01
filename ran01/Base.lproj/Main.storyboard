@@ -1416,7 +1416,7 @@
                         <outlet property="tableView" destination="fTP-MW-89i" id="nPS-Bo-0wy"/>
                         <segue destination="YqP-tH-u5n" kind="show" identifier="Me" id="tkl-8h-tpB"/>
                         <segue destination="MPZ-gd-6L7" kind="show" identifier="Logout" id="3eL-fu-NbS"/>
-                        <segue destination="ALD-qm-Ye9" kind="show" identifier="Friends" id="haN-Kp-OOq"/>
+                        <segue destination="ALD-qm-Ye9" kind="show" identifier="Find Friends" id="haN-Kp-OOq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bA-20-Lmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1611,10 +1611,10 @@
             </objects>
             <point key="canvasLocation" x="825" y="2639"/>
         </scene>
-        <!--Property Friends-->
+        <!--Property Find Friends-->
         <scene sceneID="f4T-Rp-oSa">
             <objects>
-                <viewController id="ALD-qm-Ye9" customClass="PropertyFriends" customModule="ran01" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ALD-qm-Ye9" customClass="PropertyFindFriends" customModule="ran01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bzf-3N-WXC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1632,8 +1632,8 @@
                                     <action selector="cancelBtnWasPressed:" destination="ALD-qm-Ye9" eventType="touchUpInside" id="a7r-ul-R9F"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-lp-IwR">
-                                <rect key="frame" x="160.5" y="28" width="54.5" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="find friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-lp-IwR">
+                                <rect key="frame" x="143" y="28" width="89.5" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="kMa-lQ-JHY"/>
                                 </constraints>

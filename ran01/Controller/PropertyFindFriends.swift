@@ -1,5 +1,5 @@
 //
-//  PropertyFindFriends.swift
+//  PropertyFriends.swift
 //  ran01
 //
 //  Created by Koki Tabayashi on 2018/05/30.
