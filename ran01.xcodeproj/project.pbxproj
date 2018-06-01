@@ -11,7 +11,7 @@
 		E70023E720B7F4C5002CEC74 /* AddRankItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */; };
 		E70023E920B889BE002CEC74 /* AllRankingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70023E820B889BE002CEC74 /* AllRankingItemCell.swift */; };
 		E70744E020BBEC6100BD38E9 /* EachRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70744DF20BBEC6100BD38E9 /* EachRankCell.swift */; };
-		E707452520BFD36000BD38E9 /* PropertyFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707452420BFD36000BD38E9 /* PropertyFriends.swift */; };
+		E707452520BFD36000BD38E9 /* PropertyFindFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707452420BFD36000BD38E9 /* PropertyFindFriends.swift */; };
 		E75AF9B320B23FEA000B9BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B220B23FEA000B9BDD /* AppDelegate.swift */; };
 		E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B420B23FEA000B9BDD /* AllRankVC.swift */; };
 		E75AF9B720B23FEA000B9BDD /* FriendsRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B620B23FEA000B9BDD /* FriendsRankVC.swift */; };
@@ -26,6 +26,7 @@
 		E75AF9D620B24457000B9BDD /* PropertyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9D520B24457000B9BDD /* PropertyVC.swift */; };
 		E75AF9FA20B31DD4000B9BDD /* AddRankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */; };
 		E75AF9FE20B371AD000B9BDD /* AddRankDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */; };
+		E78DCF7F20C10A2000DB28ED /* PropertyFindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF7E20C10A2000DB28ED /* PropertyFindFriendsCell.swift */; };
 		E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E4420B3D062007E5454 /* EachRankVC.swift */; };
 		E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8220B50524007E5454 /* AddCommentVC.swift */; };
 		E7C10E8520B61697007E5454 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8420B61697007E5454 /* DataService.swift */; };
@@ -50,7 +51,7 @@
 		E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankItemCell.swift; sourceTree = "<group>"; };
 		E70023E820B889BE002CEC74 /* AllRankingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankingItemCell.swift; sourceTree = "<group>"; };
 		E70744DF20BBEC6100BD38E9 /* EachRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachRankCell.swift; sourceTree = "<group>"; };
-		E707452420BFD36000BD38E9 /* PropertyFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFriends.swift; sourceTree = "<group>"; };
+		E707452420BFD36000BD38E9 /* PropertyFindFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFindFriends.swift; sourceTree = "<group>"; };
 		E75AF9AF20B23FEA000B9BDD /* ran01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ran01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75AF9B220B23FEA000B9BDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E75AF9B420B23FEA000B9BDD /* AllRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankVC.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		E75AF9D520B24457000B9BDD /* PropertyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyVC.swift; sourceTree = "<group>"; };
 		E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankingVC.swift; sourceTree = "<group>"; };
 		E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankDetailVC.swift; sourceTree = "<group>"; };
+		E78DCF7E20C10A2000DB28ED /* PropertyFindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFindFriendsCell.swift; sourceTree = "<group>"; };
 		E7C10E4420B3D062007E5454 /* EachRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachRankVC.swift; sourceTree = "<group>"; };
 		E7C10E8220B50524007E5454 /* AddCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentVC.swift; sourceTree = "<group>"; };
 		E7C10E8420B61697007E5454 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -166,7 +168,7 @@
 				E7C10E4420B3D062007E5454 /* EachRankVC.swift */,
 				E7C10E8220B50524007E5454 /* AddCommentVC.swift */,
 				E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */,
-				E707452420BFD36000BD38E9 /* PropertyFriends.swift */,
+				E707452420BFD36000BD38E9 /* PropertyFindFriends.swift */,
 				E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */,
 			);
 			path = Controller;
@@ -179,6 +181,7 @@
 				E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */,
 				E70023E820B889BE002CEC74 /* AllRankingItemCell.swift */,
 				E70744DF20BBEC6100BD38E9 /* EachRankCell.swift */,
+				E78DCF7E20C10A2000DB28ED /* PropertyFindFriendsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -346,13 +349,14 @@
 				E75AF9D420B24371000B9BDD /* FavoriteRankVC.swift in Sources */,
 				E7C10E9D20B7DBCD007E5454 /* Ranking.swift in Sources */,
 				E75AF9D020B24120000B9BDD /* AddUserVC.swift in Sources */,
+				E78DCF7F20C10A2000DB28ED /* PropertyFindFriendsCell.swift in Sources */,
 				E7C10E8B20B61D9F007E5454 /* PropertyMeVC.swift in Sources */,
 				E7C10E8F20B61DEB007E5454 /* PropertyLogoutVC.swift in Sources */,
 				E75AF9B320B23FEA000B9BDD /* AppDelegate.swift in Sources */,
 				E70744E020BBEC6100BD38E9 /* EachRankCell.swift in Sources */,
 				E75AF9D220B24363000B9BDD /* MyRankVC.swift in Sources */,
 				E75AF9CC20B240C3000B9BDD /* AuthVC.swift in Sources */,
-				E707452520BFD36000BD38E9 /* PropertyFriends.swift in Sources */,
+				E707452520BFD36000BD38E9 /* PropertyFindFriends.swift in Sources */,
 				E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */,
 				E7C10E9520B78867007E5454 /* CreateRankingVC.swift in Sources */,
 				E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */,

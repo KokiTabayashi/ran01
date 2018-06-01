@@ -29,7 +29,7 @@ class AllRankVC: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        super .viewDidAppear(animated)
+        super.viewDidAppear(animated)
         
 //        let userId = DataService.instance.getCurrentUserId()
         

@@ -50,15 +50,9 @@ class DataService {
         return _REF_COMMENTS
     }
     
-    
-    
-//    func getCurrentUserId() -> String {
-//        var userId: String = ""
-//        if let Id = Auth.auth().currentUser?.uid {
-//            userId = Id
-//        }
-//        return userId
-//    }
+    //
+    // User function
+    //
     
     func getCurrentUserId(handler: @escaping (_ userId: String) -> ()) {
         guard let userId: String = Auth.auth().currentUser?.uid else { return }
@@ -90,6 +84,63 @@ class DataService {
             }
         }
     }
+    
+    //
+    //
+    //
+    
+//    func getAllRankingFor(userId: String, friendsAllay: [String]?, favoritesAllay: [String]?, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+//        var rankingArray = [Ranking]()
+//
+//        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+//
+//            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+//
+//            for ranking in rankingSnapshot {
+//                let rankingKey = ranking.key
+//
+//                let title = ranking.childSnapshot(forPath: "title").value as! String
+//                let userId = ranking.childSnapshot(forPath: "userId").value as! String
+//                let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
+//                let explanation: String = ""
+//                let itemsId: [String] = []
+//                let starsId: [String] = []
+//                let commentsId: [String] = []
+//
+//                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: userId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+//
+//                rankingArray.append(ranking)
+//            }
+//            handler(rankingArray)
+//        }
+//    }
+    
+    
+    //
+    // Find Friends
+    //
+    
+    func findFriends(withName name: String, handler: @escaping (_ friendsArray: [String]) -> ()) {
+        var friendsArray = [String]()
+        
+        REF_USERS.queryOrderedByKey().observeSingleEvent(of: .value) { (friendsSnapshot) in
+            
+            guard let friendsSnapshot = friendsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for friend in friendsSnapshot {
+                let friendsName = friend.childSnapshot(forPath: "username").value as! String
+                if friendsName == name {
+                    friendsArray.append(friendsName)
+                }
+            }
+            handler(friendsArray)
+        }
+    }
+    
+    
+    //
+    // Ranking Function
+    //
     
     func registerRanking(withTitle title: String, userId: String, numberOfItems: Int, registerRankingComplete: @escaping (_ status: Bool, _ key: String) -> ()) {
 
@@ -301,7 +352,6 @@ class DataService {
         }
     }
 
-    
     
     
 }

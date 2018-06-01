@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="125" width="375" height="493"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allRankingItemCell" rowHeight="220" id="E5i-dd-asP" customClass="AllRankingItemCell" customModule="ran01" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allRankingItemCell" rowHeight="220" id="E5i-dd-asP" customClass="AllRankingItemCell" customModule="ran01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E5i-dd-asP" id="Tje-fp-rzd">
@@ -308,7 +308,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title of ranking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LDj-iX-MVg">
-                                <rect key="frame" x="76" y="28" width="222" height="35"/>
+                                <rect key="frame" x="76" y="28" width="223" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cTf-Le-Pvl"/>
                                 </constraints>
@@ -336,7 +336,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="1hr-lU-HVy">
-                                <rect key="frame" x="20" y="129" width="339" height="50"/>
+                                <rect key="frame" x="20" y="129" width="339" height="49.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="K5z-s0-NIw"/>
                                 </constraints>
@@ -346,10 +346,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Xm-9p-B3t">
-                                <rect key="frame" x="16" y="187" width="343" height="416"/>
+                                <rect key="frame" x="16" y="186.5" width="343" height="416.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eachRankCell" rowHeight="150" id="WQO-b0-IEJ" customClass="EachRankCell" customModule="ran01" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eachRankCell" rowHeight="150" id="WQO-b0-IEJ" customClass="EachRankCell" customModule="ran01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WQO-b0-IEJ" id="CRF-93-gox">
@@ -612,7 +612,7 @@
                                 <rect key="frame" x="16" y="71" width="343" height="277"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankCell" rowHeight="60" id="5c1-bf-1u5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankCell" rowHeight="60" id="5c1-bf-1u5">
                                         <rect key="frame" x="0.0" y="28" width="343" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5c1-bf-1u5" id="wnu-RW-KMg">
@@ -686,7 +686,7 @@
                                     <constraint firstAttribute="height" constant="250" id="cn6-Ld-dew"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="136" id="C07-xw-Tlv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="136" id="C07-xw-Tlv">
                                         <rect key="frame" x="0.0" y="28" width="343" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C07-xw-Tlv" id="tkM-Qi-npg">
@@ -998,7 +998,7 @@
                                 <rect key="frame" x="16" y="114" width="343" height="397"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addRankCell" rowHeight="150" id="zsa-sy-dio" customClass="AddRankItemCell" customModule="ran01" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addRankCell" rowHeight="150" id="zsa-sy-dio" customClass="AddRankItemCell" customModule="ran01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zsa-sy-dio" id="mHQ-Je-wi8">
@@ -1374,7 +1374,7 @@
                                 <rect key="frame" x="0.0" y="71" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="propertyTableCell" id="Afl-1f-iEX" customClass="PropertyCell" customModule="ran01" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="propertyTableCell" id="Afl-1f-iEX" customClass="PropertyCell" customModule="ran01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Afl-1f-iEX" id="2ib-Js-6IF">
@@ -1382,7 +1382,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="property item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3l-Im-ySa">
-                                                    <rect key="frame" x="134" y="10" width="106" height="23.5"/>
+                                                    <rect key="frame" x="134.5" y="10" width="106" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1445,7 +1445,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ir1-l0-uEo">
-                                <rect key="frame" x="175.5" y="28" width="25" height="35"/>
+                                <rect key="frame" x="175" y="28" width="25" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="h50-wc-KZQ"/>
                                 </constraints>
@@ -1454,7 +1454,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-QF-kxr">
-                                <rect key="frame" x="138" y="79" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="79" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="JMP-23-88m"/>
                                     <constraint firstAttribute="width" constant="100" id="gxd-D2-5T6"/>
@@ -1659,6 +1659,9 @@
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchBtnWasPressed:" destination="ALD-qm-Ye9" eventType="touchUpInside" id="4GS-Nr-lcO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1666,7 +1669,7 @@
                                 <rect key="frame" x="0.0" y="112" width="375" height="555"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="propertyFriendsCell" rowHeight="60" id="QmA-Sx-bYt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="propertyFriendsCell" rowHeight="60" id="QmA-Sx-bYt" customClass="PropertyFindFriendsCell" customModule="ran01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QmA-Sx-bYt" id="VlW-or-Z0U">
@@ -1695,6 +1698,9 @@
                                                     <state key="normal" title="Add Friend">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="addFriendBtnWasPressed:" destination="QmA-Sx-bYt" eventType="touchUpInside" id="Eb6-7s-1UE"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1707,6 +1713,11 @@
                                                 <constraint firstItem="QeN-NR-Qx2" firstAttribute="trailing" secondItem="VlW-or-Z0U" secondAttribute="trailingMargin" constant="8" id="oag-I5-M4a"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addFriendBtn" destination="QeN-NR-Qx2" id="lp2-7w-RZM"/>
+                                            <outlet property="friendName" destination="mBs-ET-wrh" id="G43-J5-xgV"/>
+                                            <outlet property="friendProfileImage" destination="WWy-Cl-UWY" id="LqT-Oy-lRZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1728,6 +1739,7 @@
                         <viewLayoutGuide key="safeArea" id="gLO-ev-chW"/>
                     </view>
                     <connections>
+                        <outlet property="searchField" destination="eSE-8f-77H" id="Mb8-8X-LOS"/>
                         <outlet property="tableView" destination="rFl-rt-uvf" id="QNR-rv-uaG"/>
                     </connections>
                 </viewController>
@@ -1753,7 +1765,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pro-uy-Jt6">
-                                <rect key="frame" x="168" y="165.5" width="40" height="36"/>
+                                <rect key="frame" x="167.5" y="165.5" width="40" height="36"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="login">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1934,7 +1946,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="create user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tn-NB-b0t">
-                                <rect key="frame" x="144.5" y="28" width="87" height="35"/>
+                                <rect key="frame" x="144" y="28" width="87" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cHS-Vn-KR3"/>
                                 </constraints>
@@ -1997,7 +2009,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqE-Ns-49z">
-                                <rect key="frame" x="145" y="451" width="86" height="36"/>
+                                <rect key="frame" x="144.5" y="451" width="86" height="36"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="create user">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
