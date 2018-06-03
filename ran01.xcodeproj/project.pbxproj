@@ -27,6 +27,12 @@
 		E75AF9FA20B31DD4000B9BDD /* AddRankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */; };
 		E75AF9FE20B371AD000B9BDD /* AddRankDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */; };
 		E78DCF7F20C10A2000DB28ED /* PropertyFindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF7E20C10A2000DB28ED /* PropertyFindFriendsCell.swift */; };
+		E78DCF8120C25A8500DB28ED /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8020C25A8500DB28ED /* Friend.swift */; };
+		E78DCF8320C2747500DB28ED /* SendFriendRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8220C2747500DB28ED /* SendFriendRequestVC.swift */; };
+		E78DCF8520C32E0600DB28ED /* FollowMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8420C32E0600DB28ED /* FollowMemberVC.swift */; };
+		E78DCF8720C32E1800DB28ED /* FollowerMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8620C32E1800DB28ED /* FollowerMemberVC.swift */; };
+		E78DCF8920C3987D00DB28ED /* FollowMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8820C3987C00DB28ED /* FollowMemberCell.swift */; };
+		E78DCF8B20C3988D00DB28ED /* FollowerMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8A20C3988D00DB28ED /* FollowerMemberCell.swift */; };
 		E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E4420B3D062007E5454 /* EachRankVC.swift */; };
 		E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8220B50524007E5454 /* AddCommentVC.swift */; };
 		E7C10E8520B61697007E5454 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8420B61697007E5454 /* DataService.swift */; };
@@ -69,6 +75,12 @@
 		E75AF9F920B31DD4000B9BDD /* AddRankingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankingVC.swift; sourceTree = "<group>"; };
 		E75AF9FD20B371AD000B9BDD /* AddRankDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankDetailVC.swift; sourceTree = "<group>"; };
 		E78DCF7E20C10A2000DB28ED /* PropertyFindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFindFriendsCell.swift; sourceTree = "<group>"; };
+		E78DCF8020C25A8500DB28ED /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		E78DCF8220C2747500DB28ED /* SendFriendRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFriendRequestVC.swift; sourceTree = "<group>"; };
+		E78DCF8420C32E0600DB28ED /* FollowMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowMemberVC.swift; sourceTree = "<group>"; };
+		E78DCF8620C32E1800DB28ED /* FollowerMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerMemberVC.swift; sourceTree = "<group>"; };
+		E78DCF8820C3987C00DB28ED /* FollowMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowMemberCell.swift; sourceTree = "<group>"; };
+		E78DCF8A20C3988D00DB28ED /* FollowerMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerMemberCell.swift; sourceTree = "<group>"; };
 		E7C10E4420B3D062007E5454 /* EachRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachRankVC.swift; sourceTree = "<group>"; };
 		E7C10E8220B50524007E5454 /* AddCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentVC.swift; sourceTree = "<group>"; };
 		E7C10E8420B61697007E5454 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -170,6 +182,9 @@
 				E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */,
 				E707452420BFD36000BD38E9 /* PropertyFindFriends.swift */,
 				E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */,
+				E78DCF8220C2747500DB28ED /* SendFriendRequestVC.swift */,
+				E78DCF8420C32E0600DB28ED /* FollowMemberVC.swift */,
+				E78DCF8620C32E1800DB28ED /* FollowerMemberVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,6 +197,8 @@
 				E70023E820B889BE002CEC74 /* AllRankingItemCell.swift */,
 				E70744DF20BBEC6100BD38E9 /* EachRankCell.swift */,
 				E78DCF7E20C10A2000DB28ED /* PropertyFindFriendsCell.swift */,
+				E78DCF8820C3987C00DB28ED /* FollowMemberCell.swift */,
+				E78DCF8A20C3988D00DB28ED /* FollowerMemberCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +209,7 @@
 				E7C10E8620B61748007E5454 /* Property.swift */,
 				E7C10E9C20B7DBCD007E5454 /* Ranking.swift */,
 				E7C10E9A20B7D936007E5454 /* RankItem.swift */,
+				E78DCF8020C25A8500DB28ED /* Friend.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,19 +366,25 @@
 				E70023E720B7F4C5002CEC74 /* AddRankItemCell.swift in Sources */,
 				E75AF9D420B24371000B9BDD /* FavoriteRankVC.swift in Sources */,
 				E7C10E9D20B7DBCD007E5454 /* Ranking.swift in Sources */,
+				E78DCF8720C32E1800DB28ED /* FollowerMemberVC.swift in Sources */,
 				E75AF9D020B24120000B9BDD /* AddUserVC.swift in Sources */,
 				E78DCF7F20C10A2000DB28ED /* PropertyFindFriendsCell.swift in Sources */,
 				E7C10E8B20B61D9F007E5454 /* PropertyMeVC.swift in Sources */,
 				E7C10E8F20B61DEB007E5454 /* PropertyLogoutVC.swift in Sources */,
 				E75AF9B320B23FEA000B9BDD /* AppDelegate.swift in Sources */,
 				E70744E020BBEC6100BD38E9 /* EachRankCell.swift in Sources */,
+				E78DCF8B20C3988D00DB28ED /* FollowerMemberCell.swift in Sources */,
 				E75AF9D220B24363000B9BDD /* MyRankVC.swift in Sources */,
 				E75AF9CC20B240C3000B9BDD /* AuthVC.swift in Sources */,
 				E707452520BFD36000BD38E9 /* PropertyFindFriends.swift in Sources */,
 				E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */,
+				E78DCF8920C3987D00DB28ED /* FollowMemberCell.swift in Sources */,
+				E78DCF8320C2747500DB28ED /* SendFriendRequestVC.swift in Sources */,
 				E7C10E9520B78867007E5454 /* CreateRankingVC.swift in Sources */,
 				E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */,
+				E78DCF8120C25A8500DB28ED /* Friend.swift in Sources */,
 				E7C10E9920B795BB007E5454 /* PropertyService.swift in Sources */,
+				E78DCF8520C32E0600DB28ED /* FollowMemberVC.swift in Sources */,
 				E75AF9D620B24457000B9BDD /* PropertyVC.swift in Sources */,
 				E75AF9CE20B240D3000B9BDD /* LoginVC.swift in Sources */,
 				E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */,

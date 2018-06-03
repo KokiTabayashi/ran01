@@ -14,7 +14,7 @@ class PropertyFindFriends: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var friendsName = ""
-    var friendsArray: [String] = []
+    var friendsArray: [Friend] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,21 @@ class PropertyFindFriends: UIViewController {
         }
     }
     
+    @IBAction func addFriendButtonWasPressed(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! PropertyFindFriendsCell
+        guard let row = self.tableView.indexPath(for: cell)?.row else {
+            return
+        }
+        
+        performSegue(withIdentifier: "SendFriendRequestVC", sender: friendsArray[row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let sendFriendRequestVC = segue.destination as? SendFriendRequestVC {
+            sendFriendRequestVC.friend = sender as! Friend
+        }
+    }
+    
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -65,7 +80,7 @@ extension PropertyFindFriends: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "propertyFriendsCell") as? PropertyFindFriendsCell else { return UITableViewCell() }
         
-        cell.configureCell(friendName: friendsArray[indexPath.row])
+        cell.configureCell(friendName: friendsArray[indexPath.row].userName)
         
         return cell
     }

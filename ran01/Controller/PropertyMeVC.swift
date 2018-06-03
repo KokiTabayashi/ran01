@@ -15,7 +15,11 @@ class PropertyMeVC: UIViewController {
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var addUserDateLbl: UILabel!
+    @IBOutlet weak var numberOfFollowBtn: UIButton!
+    @IBOutlet weak var numberOfFollowerBtn: UIButton!
     
+    var friendsUserIdArray: [String] = []
+    var followersUserIdArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +28,31 @@ class PropertyMeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLbl.text = Auth.auth().currentUser?.email
-        if let userID = Auth.auth().currentUser?.uid {
-            DataService.instance.getUsername(forUID: userID) { (returnedUsername) in
+        addUserDateLbl.text = TimeService.instance.getAddUserDate()
+        
+        if let userId = Auth.auth().currentUser?.uid {
+            DataService.instance.getUsername(forUID: userId) { (returnedUsername) in
                 self.usernameLbl.text = returnedUsername
             }
+            
+            DataService.instance.getAllFriendFor(userId: userId) { (returnedFriendsArray) in
+                self.friendsUserIdArray = returnedFriendsArray
+                self.numberOfFollowBtn.setTitle("\(self.friendsUserIdArray.count)", for: .normal)
+            }
+            
+            DataService.instance.getAllFollowerFor(userId: userId) { (returnedFollowersArray) in
+                self.followersUserIdArray = returnedFollowersArray
+                self.numberOfFollowerBtn.setTitle("\(self.followersUserIdArray.count)", for: .normal)
+            }
         }
-        addUserDateLbl.text = TimeService.instance.getAddUserDate()
+    }
+    
+    @IBAction func numberOfFollowBtnWasPressed(_ sender: Any) {
+        performSegue(withIdentifier: "FollowMemberVC", sender: nil)
+    }
+    
+    @IBAction func numberOfFollowerBtnWasPressed(_ sender: Any) {
+        performSegue(withIdentifier: "FollowerMemberVC", sender: nil)
     }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {

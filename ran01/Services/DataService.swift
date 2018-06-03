@@ -21,6 +21,8 @@ class DataService {
     private var _REF_ITEMS = DB_BASE.child("items")
     private var _REF_ITEMS_TMP = DB_BASE.child("itemsTmp")
     private var _REF_COMMENTS = DB_BASE.child("comments")
+    private var _REF_FRIENDS = DB_BASE.child("friends")
+    private var _REF_FOLLOWER = DB_BASE.child("follower")
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -48,6 +50,14 @@ class DataService {
     
     var REF_COMMENTS: DatabaseReference {
         return _REF_COMMENTS
+    }
+    
+    var REF_FRIENDS: DatabaseReference {
+        return _REF_FRIENDS
+    }
+    
+    var REF_FOLLOWER: DatabaseReference {
+        return _REF_FOLLOWER
     }
     
     //
@@ -85,57 +95,74 @@ class DataService {
         }
     }
     
-    //
-    //
-    //
-    
-//    func getAllRankingFor(userId: String, friendsAllay: [String]?, favoritesAllay: [String]?, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
-//        var rankingArray = [Ranking]()
-//
-//        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
-//
-//            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
-//
-//            for ranking in rankingSnapshot {
-//                let rankingKey = ranking.key
-//
-//                let title = ranking.childSnapshot(forPath: "title").value as! String
-//                let userId = ranking.childSnapshot(forPath: "userId").value as! String
-//                let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
-//                let explanation: String = ""
-//                let itemsId: [String] = []
-//                let starsId: [String] = []
-//                let commentsId: [String] = []
-//
-//                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: userId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
-//
-//                rankingArray.append(ranking)
-//            }
-//            handler(rankingArray)
-//        }
-//    }
-    
     
     //
-    // Find Friends
+    // Friends
     //
     
-    func findFriends(withName name: String, handler: @escaping (_ friendsArray: [String]) -> ()) {
-        var friendsArray = [String]()
+    func findFriends(withName name: String, handler: @escaping (_ friendsArray: [Friend]) -> ()) {
+        var friendsArray = [Friend]()
         
         REF_USERS.queryOrderedByKey().observeSingleEvent(of: .value) { (friendsSnapshot) in
             
             guard let friendsSnapshot = friendsSnapshot.children.allObjects as? [DataSnapshot] else { return }
             
             for friend in friendsSnapshot {
-                let friendsName = friend.childSnapshot(forPath: "username").value as! String
-                if friendsName == name {
-                    friendsArray.append(friendsName)
+                let friendUserId = friend.key
+                let friendName = friend.childSnapshot(forPath: "username").value as! String
+                if friendName == name {
+                    let friendInfo = Friend(userId: friendUserId, userName: friendName)
+                    friendsArray.append(friendInfo)
                 }
             }
             handler(friendsArray)
         }
     }
+    
+    func addFriend(friendsUserId: String, handler: @escaping (_ status: Bool) -> ()) {
+        getCurrentUserId { (userId) in
+            // add follow
+            self.REF_FRIENDS.child(userId).childByAutoId().updateChildValues(["friendsUserId": friendsUserId])
+            
+            // add follower
+            self.REF_FOLLOWER.child(friendsUserId).childByAutoId().updateChildValues(["followerUserId": userId])
+        }
+    }
+    
+    
+    func getAllFriendFor(userId: String, handler: @escaping (_ friendsUserIdArray: [String]) -> ()) {
+        
+        var friendsUserIdArray = [String]()
+        
+        REF_FRIENDS.child(userId).observeSingleEvent(of: .value) { (friendsSnapshot) in
+            
+            guard let friendsSnapshot = friendsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for friend in friendsSnapshot {
+                let userId = friend.childSnapshot(forPath: "friendsUserId").value as! String
+                friendsUserIdArray.append(userId)
+            }
+            handler(friendsUserIdArray)
+        }
+    }
+    
+    
+    func getAllFollowerFor(userId: String, handler: @escaping (_ friendsUserIdArray: [String]) -> ()) {
+        
+        var followerUserIdArray = [String]()
+        
+        REF_FOLLOWER.child(userId).observeSingleEvent(of: .value) { (followersSnapshot) in
+            
+            guard let followersSnapshot = followersSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for follower in followersSnapshot {
+                let userId = follower.childSnapshot(forPath: "followerUserId").value as! String
+                followerUserIdArray.append(userId)
+            }
+            handler(followerUserIdArray)
+        }
+    }
+    
     
     
     //
@@ -253,6 +280,7 @@ class DataService {
             guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
             
             for ranking in rankingSnapshot {
+                // getting ranking Key
                 let rankingKey = ranking.key
 
                 let title = ranking.childSnapshot(forPath: "title").value as! String
