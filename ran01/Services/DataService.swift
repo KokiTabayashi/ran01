@@ -284,16 +284,45 @@ class DataService {
                 let rankingKey = ranking.key
 
                 let title = ranking.childSnapshot(forPath: "title").value as! String
-                let userId = ranking.childSnapshot(forPath: "userId").value as! String
+                let rankingUserId = ranking.childSnapshot(forPath: "userId").value as! String
                 let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
                 let explanation: String = ""
                 let itemsId: [String] = []
                 let starsId: [String] = []
                 let commentsId: [String] = []
                 
-                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: userId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: rankingUserId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
                 
                 rankingArray.append(ranking)
+            }
+            handler(rankingArray)
+        }
+    }
+    
+    func getAllMyRankingFor(userId: String, friendsAllay: [String]?, favoritesAllay: [String]?, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+        var rankingArray = [Ranking]()
+        
+        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+            
+            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for ranking in rankingSnapshot {
+                // getting ranking Key
+                let rankingKey = ranking.key
+                
+                let title = ranking.childSnapshot(forPath: "title").value as! String
+                let rankingUserId = ranking.childSnapshot(forPath: "userId").value as! String
+                let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
+                let explanation: String = ""
+                let itemsId: [String] = []
+                let starsId: [String] = []
+                let commentsId: [String] = []
+                
+                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: rankingUserId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+                
+                if userId == rankingUserId {
+                    rankingArray.append(ranking)
+                }
             }
             handler(rankingArray)
         }

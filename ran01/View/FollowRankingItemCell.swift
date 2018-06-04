@@ -1,15 +1,15 @@
 //
-//  AllRankingItemCell.swift
+//  FollowRankingItemCell.swift
 //  ran01
 //
-//  Created by Koki Tabayashi on 2018/05/25.
+//  Created by Koki Tabayashi on 2018/06/03.
 //  Copyright © 2018年 Koki Tabayashi. All rights reserved.
 //
 
 import UIKit
 
-class AllRankingItemCell: UITableViewCell {
-    
+class FollowRankingItemCell: UITableViewCell {
+
     @IBOutlet weak var titleOfRankingLbl: UILabel!
     @IBOutlet weak var nameOfRankingOwnerLbl: UILabel!
     @IBOutlet weak var dateRankingWasCreatedLbl: UILabel!
@@ -20,7 +20,7 @@ class AllRankingItemCell: UITableViewCell {
     @IBOutlet weak var firstRankNumberLbl: UILabel!
     @IBOutlet weak var secondRankNumberLbl: UILabel!
     @IBOutlet weak var thirdRankNumberLbl: UILabel!
-
+    
     @IBOutlet weak var firstRankItemNameLbl: UILabel!
     @IBOutlet weak var secondRankItemNameLbl: UILabel!
     @IBOutlet weak var thirdRankItemNameLbl: UILabel!
@@ -28,10 +28,10 @@ class AllRankingItemCell: UITableViewCell {
     @IBOutlet weak var firstRankItemImage: UIImageView!
     @IBOutlet weak var secondRankItemImage: UIImageView!
     @IBOutlet weak var thirdRankItemImage: UIImageView!
+  
     
-
     func configureCell(title: String, nameOfRankingOwner: String, dateRankingWasCreated: String, profileOfOwner: String, fried: String, rankItemDetail: [Int : RankItem]) {
-    
+        
         titleOfRankingLbl.text = title
         nameOfRankingOwnerLbl.text = nameOfRankingOwner
         dateRankingWasCreatedLbl.text = dateRankingWasCreated
@@ -96,7 +96,7 @@ class AllRankingItemCell: UITableViewCell {
             } else {
                 secondRankItemNameLbl.text = "-"
             }
-                thirdRankItemNameLbl.text = "-"
+            thirdRankItemNameLbl.text = "-"
         } else if rankItemDetail.count > 0 {
             if rankItemDetail[0]?.title != "" {
                 firstRankItemNameLbl.text = rankItemDetail[0]?.title

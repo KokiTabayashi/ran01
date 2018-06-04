@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FollowRankVC.swift
 //  ran01
 //
 //  Created by Koki Tabayashi on 2018/05/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendsRankVC: UIViewController {
+class FollowRankVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
