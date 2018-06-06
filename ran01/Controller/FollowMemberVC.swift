@@ -36,7 +36,7 @@ class FollowMemberVC: UIViewController {
     
     func _listAllFollowUser() {
         if let userId = Auth.auth().currentUser?.uid {
-            DataService.instance.getAllFriendFor(userId: userId) { (returnedUserIdArray) in
+            DataService.instance.getAllFollowUserFor(userId: userId) { (returnedUserIdArray) in
                 self.friendsUserIdArray = returnedUserIdArray
                 for friendUserId in self.friendsUserIdArray {
                     DataService.instance.getUsername(forUID: friendUserId, handler: { (returnedUserName) in

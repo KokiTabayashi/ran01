@@ -35,7 +35,7 @@ class PropertyMeVC: UIViewController {
                 self.usernameLbl.text = returnedUsername
             }
             
-            DataService.instance.getAllFriendFor(userId: userId) { (returnedFriendsArray) in
+            DataService.instance.getAllFollowUserFor(userId: userId) { (returnedFriendsArray) in
                 self.friendsUserIdArray = returnedFriendsArray
                 self.numberOfFollowBtn.setTitle("\(self.friendsUserIdArray.count)", for: .normal)
             }

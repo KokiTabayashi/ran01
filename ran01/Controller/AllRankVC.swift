@@ -10,6 +10,7 @@ import UIKit
 
 class AllRankVC: UIViewController {
 
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     var rankingKey: String = ""
@@ -23,20 +24,26 @@ class AllRankVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
+        _setTableView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        let userId = DataService.instance.getCurrentUserId()
-        
-        let friendsAllay: [String] = []
-        let favoritsAllay: [String] = []
-        
+        _getAllRanking()
+    }
+    
+    func _setTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func _getAllRanking() {
         DataService.instance.getCurrentUserId { (userId) in
+            
+            let friendsAllay: [String] = []
+            let favoritsAllay: [String] = []
+            
             DataService.instance.getAllRankingFor(userId: userId, friendsAllay: friendsAllay, favoritesAllay: favoritsAllay) { (returnRanking) in
                 self.rankingArray = returnRanking.reversed()
                 
@@ -44,6 +51,9 @@ class AllRankVC: UIViewController {
             }
             self.tableView.reloadData()
         }
+    }
+    
+    @IBAction func searchBtnWasPressed(_ sender: Any) {
     }
 }
 

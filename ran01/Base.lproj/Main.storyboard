@@ -246,6 +246,9 @@
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchBtnWasPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Scm-bx-8ND"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -278,6 +281,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="All" image="feed-tabIcon" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="searchTextField" destination="g4b-U9-3Dc" id="rme-aq-J2n"/>
                         <outlet property="tableView" destination="sCx-7q-ml0" id="oql-sC-KP2"/>
                         <segue destination="p6s-6b-Jnh" kind="show" identifier="EachRankVC" id="xYl-0E-sgd"/>
                     </connections>
@@ -1331,6 +1335,9 @@
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchBtnWasPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="IAa-xs-qma"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1358,7 +1365,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VOP-WG-Kqp">
                                                             <rect key="frame" x="55" y="0.0" width="230" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwH-Vb-7GG">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="CwH-Vb-7GG">
                                                                     <rect key="frame" x="0.0" y="0.0" width="230" height="26"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1367,14 +1374,17 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7Tz-0j-u5Y">
                                                                     <rect key="frame" x="0.0" y="31" width="230" height="19"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-I2-Qao">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-I2-Qao">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="148" height="19"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-Rb-DqC">
-                                                                            <rect key="frame" x="182" y="0.0" width="48" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-Rb-DqC">
+                                                                            <rect key="frame" x="150" y="0.0" width="80" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="80" id="lyS-KI-lSS"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -1534,6 +1544,10 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Follow" image="groups-tabIcon" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="qHg-CS-MfE" id="twT-4o-16K"/>
+                        <outlet property="tableView" destination="91S-zC-gIu" id="d58-Kc-Rba"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -1542,7 +1556,7 @@
         <!--Mine-->
         <scene sceneID="DS6-eZ-fam">
             <objects>
-                <viewController id="Dwy-cL-fUu" customClass="FavoriteRankVC" customModule="ran01" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dwy-cL-fUu" customClass="MyRankVC" customModule="ran01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IkK-Wo-ePL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1565,6 +1579,9 @@
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchBtnWasPressed:" destination="Dwy-cL-fUu" eventType="touchUpInside" id="4ZN-Xy-v3F"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1572,7 +1589,7 @@
                                 <rect key="frame" x="0.0" y="81" width="375" height="537"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="220" id="iIo-hi-asQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myRankingItemCell" rowHeight="220" id="iIo-hi-asQ" customClass="MyRankingItemCell" customModule="ran01" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iIo-hi-asQ" id="hjJ-4K-oVh">
@@ -1592,7 +1609,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BPF-rm-qRH">
                                                             <rect key="frame" x="55" y="0.0" width="230" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-yP-Q5X">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-yP-Q5X">
                                                                     <rect key="frame" x="0.0" y="0.0" width="230" height="26"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1601,14 +1618,17 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="PEA-L6-bsF">
                                                                     <rect key="frame" x="0.0" y="31" width="230" height="19"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gz4-bf-lqI">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gz4-bf-lqI">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="148" height="19"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDO-mB-JjF">
-                                                                            <rect key="frame" x="182" y="0.0" width="48" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="IDO-mB-JjF">
+                                                                            <rect key="frame" x="150" y="0.0" width="80" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="80" id="ksJ-LI-dfr"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -1735,6 +1755,22 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="MI5-kq-4hm" secondAttribute="trailing" constant="8" id="zOu-yY-dPX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateRankingWasCreatedLbl" destination="IDO-mB-JjF" id="qGT-Fv-LgU"/>
+                                            <outlet property="firstRankItemImage" destination="CWx-sE-pfF" id="8Hh-Jc-N4M"/>
+                                            <outlet property="firstRankItemNameLbl" destination="rW2-up-bYT" id="mlV-uK-CIj"/>
+                                            <outlet property="firstRankNumberLbl" destination="sd8-lJ-YbI" id="okK-gG-QcO"/>
+                                            <outlet property="friendImage" destination="xLH-DB-Cnf" id="BmE-vc-4Xn"/>
+                                            <outlet property="nameOfRankingOwnerLbl" destination="Gz4-bf-lqI" id="am3-c9-eHy"/>
+                                            <outlet property="profileOfOwnerImage" destination="rpe-Hj-3vs" id="0dc-8E-WN6"/>
+                                            <outlet property="secondRankItemImage" destination="oEU-Er-kfo" id="1ie-LQ-Ghj"/>
+                                            <outlet property="secondRankItemNameLbl" destination="s7h-QZ-olH" id="OIE-jl-PBY"/>
+                                            <outlet property="secondRankNumberLbl" destination="nay-zs-Czm" id="zgr-kJ-DxV"/>
+                                            <outlet property="thirdRankItemImage" destination="efD-1w-U3R" id="sa6-cv-3FZ"/>
+                                            <outlet property="thirdRankItemNameLbl" destination="ika-fS-65w" id="6So-mA-klB"/>
+                                            <outlet property="thirdRankNumberLbl" destination="ZzF-rB-7Xm" id="2bj-IX-ZAY"/>
+                                            <outlet property="titleOfRankingLbl" destination="iR1-yP-Q5X" id="cIk-cA-Xbg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1752,6 +1788,10 @@
                         <viewLayoutGuide key="safeArea" id="NiV-sT-olA"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mine" image="me-tabIcon" id="vMw-6S-45c"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="iYV-Gg-5ec" id="YdP-1H-it6"/>
+                        <outlet property="tableView" destination="ELc-ff-a90" id="cR4-jb-58F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lvo-la-lT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1997,7 +2037,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="goE-Aw-NSy">
                                                             <rect key="frame" x="55" y="0.0" width="230" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rl-ZO-cH7">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="8rl-ZO-cH7">
                                                                     <rect key="frame" x="0.0" y="0.0" width="230" height="26"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2006,14 +2046,17 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="F1a-7Z-rKa">
                                                                     <rect key="frame" x="0.0" y="31" width="230" height="19"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krI-5A-pnM">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krI-5A-pnM">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="148" height="19"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmj-3N-Eay">
-                                                                            <rect key="frame" x="182" y="0.0" width="48" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="zmj-3N-Eay">
+                                                                            <rect key="frame" x="150" y="0.0" width="80" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="80" id="qbT-cR-4KA"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -2096,7 +2139,7 @@
         <!--Favorite-->
         <scene sceneID="ezt-Ac-Jyk">
             <objects>
-                <viewController id="VWe-UU-8I2" customClass="MyRankVC" customModule="ran01" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VWe-UU-8I2" customClass="FavoriteRankVC" customModule="ran01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5nN-5N-ozS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2235,7 +2278,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-fT-DOm">
                                                             <rect key="frame" x="55" y="0.0" width="230" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qR-7i-lei">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Best Yatsuhashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="2qR-7i-lei">
                                                                     <rect key="frame" x="0.0" y="0.0" width="230" height="26"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2244,14 +2287,17 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="grh-Eh-C6X">
                                                                     <rect key="frame" x="0.0" y="31" width="230" height="19"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWH-BV-f4w">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Koki Tabayashi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWH-BV-f4w">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="148" height="19"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f90-OT-KMK">
-                                                                            <rect key="frame" x="182" y="0.0" width="48" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018/5/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="f90-OT-KMK">
+                                                                            <rect key="frame" x="150" y="0.0" width="80" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="80" id="lq9-oD-QAe"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>

@@ -130,9 +130,9 @@ class DataService {
     }
     
     
-    func getAllFriendFor(userId: String, handler: @escaping (_ friendsUserIdArray: [String]) -> ()) {
+    func getAllFollowUserFor(userId: String, handler: @escaping (_ followUserIdArray: [String]) -> ()) {
         
-        var friendsUserIdArray = [String]()
+        var followUserIdArray = [String]()
         
         REF_FRIENDS.child(userId).observeSingleEvent(of: .value) { (friendsSnapshot) in
             
@@ -140,9 +140,9 @@ class DataService {
             
             for friend in friendsSnapshot {
                 let userId = friend.childSnapshot(forPath: "friendsUserId").value as! String
-                friendsUserIdArray.append(userId)
+                followUserIdArray.append(userId)
             }
-            handler(friendsUserIdArray)
+            handler(followUserIdArray)
         }
     }
     
@@ -299,7 +299,7 @@ class DataService {
         }
     }
     
-    func getAllMyRankingFor(userId: String, friendsAllay: [String]?, favoritesAllay: [String]?, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+    func getAllRankingForUser(userId: String, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
         var rankingArray = [Ranking]()
         
         REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
@@ -321,6 +321,35 @@ class DataService {
                 let ranking = Ranking(rankingKey: rankingKey, title: title, userId: rankingUserId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
                 
                 if userId == rankingUserId {
+                    rankingArray.append(ranking)
+                }
+            }
+            handler(rankingArray)
+        }
+    }
+    
+    func getAllRankingForFollowUser(followUserIdArray: [String], handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+        var rankingArray = [Ranking]()
+        
+        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+            
+            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for ranking in rankingSnapshot {
+                // getting ranking Key
+                let rankingKey = ranking.key
+                
+                let title = ranking.childSnapshot(forPath: "title").value as! String
+                let rankingUserId = ranking.childSnapshot(forPath: "userId").value as! String
+                let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
+                let explanation: String = ""
+                let itemsId: [String] = []
+                let starsId: [String] = []
+                let commentsId: [String] = []
+                
+                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: rankingUserId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+                
+                if followUserIdArray.index(of: rankingUserId) != nil {
                     rankingArray.append(ranking)
                 }
             }
