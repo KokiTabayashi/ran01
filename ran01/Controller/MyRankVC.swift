@@ -102,13 +102,13 @@ extension MyRankVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "EachRankVC", sender: rankingArray[indexPath.row].rankingKey)
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let eachRankVC = segue.destination as? EachRankVC {
-//            eachRankVC.rankingKey = sender as! String
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "EachRankVC", sender: rankingArray[indexPath.row].rankingKey)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let eachRankVC = segue.destination as? EachRankVC {
+            eachRankVC.rankingKey = sender as! String
+        }
+    }
 }

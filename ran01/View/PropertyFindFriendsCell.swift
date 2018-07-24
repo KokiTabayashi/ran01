@@ -12,8 +12,14 @@ class PropertyFindFriendsCell: UITableViewCell {
 
     @IBOutlet weak var friendProfileImage: UIImageView!
     @IBOutlet weak var friendName: UILabel!
+    @IBOutlet weak var addFriendBtn: UIButton!
     
-    func configureCell(friendName: String) {
+    func configureCell(friendName: String, isFriend: Bool) {
         self.friendName.text = friendName
+        if isFriend {
+            addFriendBtn.isHidden = true
+        } else {
+            addFriendBtn.isHidden = false
+        }
     }
 }

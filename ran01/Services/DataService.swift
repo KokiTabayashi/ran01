@@ -110,12 +110,29 @@ class DataService {
             for friend in friendsSnapshot {
                 let friendUserId = friend.key
                 let friendName = friend.childSnapshot(forPath: "username").value as! String
-                if friendName == name {
+
+                if friendName.contains(name) {
                     let friendInfo = Friend(userId: friendUserId, userName: friendName)
                     friendsArray.append(friendInfo)
                 }
             }
             handler(friendsArray)
+        }
+    }
+    
+    func isFriends(withName name: String, handler: @escaping (_ status: Bool) -> ()) {
+        REF_USERS.queryOrderedByKey().observeSingleEvent(of: .value) { (friendsSnapshot) in
+            guard let friendSnapshot = friendsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for friend in friendSnapshot {
+                let friendName = friend.childSnapshot(forPath: "username").value as! String
+                
+                if friendName == name {
+                    handler(true)
+                } else {
+                    handler(false)
+                }
+            }
         }
     }
     
@@ -327,6 +344,42 @@ class DataService {
             handler(rankingArray)
         }
     }
+    
+    func getAllFavoriteRankingForUser(userId: String, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+
+        //
+        // Need to code this function 2018/07/23
+        //
+
+
+        var rankingArray = [Ranking]()
+        
+        REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
+            
+            guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for ranking in rankingSnapshot {
+                // getting ranking Key
+                let rankingKey = ranking.key
+                
+                let title = ranking.childSnapshot(forPath: "title").value as! String
+                let rankingUserId = ranking.childSnapshot(forPath: "userId").value as! String
+                let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
+                let explanation: String = ""
+                let itemsId: [String] = []
+                let starsId: [String] = []
+                let commentsId: [String] = []
+                
+                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: rankingUserId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+                
+                if userId == rankingUserId {
+                    rankingArray.append(ranking)
+                }
+            }
+            handler(rankingArray)
+        }
+    }
+    
     
     func getAllRankingForFollowUser(followUserIdArray: [String], handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
         var rankingArray = [Ranking]()

@@ -11,7 +11,7 @@
 		E70023E720B7F4C5002CEC74 /* AddRankItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */; };
 		E70023E920B889BE002CEC74 /* AllRankingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70023E820B889BE002CEC74 /* AllRankingItemCell.swift */; };
 		E70744E020BBEC6100BD38E9 /* EachRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70744DF20BBEC6100BD38E9 /* EachRankCell.swift */; };
-		E707452520BFD36000BD38E9 /* PropertyFindFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707452420BFD36000BD38E9 /* PropertyFindFriends.swift */; };
+		E707452520BFD36000BD38E9 /* PropertyFindFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E707452420BFD36000BD38E9 /* PropertyFindFriendsVC.swift */; };
 		E75AF9B320B23FEA000B9BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B220B23FEA000B9BDD /* AppDelegate.swift */; };
 		E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B420B23FEA000B9BDD /* AllRankVC.swift */; };
 		E75AF9B720B23FEA000B9BDD /* FollowRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AF9B620B23FEA000B9BDD /* FollowRankVC.swift */; };
@@ -36,6 +36,7 @@
 		E78DCF8D20C513DA00DB28ED /* FollowRankingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8C20C513DA00DB28ED /* FollowRankingItemCell.swift */; };
 		E78DCF8F20C5141000DB28ED /* MyRankingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF8E20C5141000DB28ED /* MyRankingItemCell.swift */; };
 		E78DCF9120C5142000DB28ED /* FavoriteRankingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF9020C5142000DB28ED /* FavoriteRankingItemCell.swift */; };
+		E78DCF9320C7BC6100DB28ED /* FileUploadTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78DCF9220C7BC6100DB28ED /* FileUploadTestVC.swift */; };
 		E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E4420B3D062007E5454 /* EachRankVC.swift */; };
 		E7C10E8320B50524007E5454 /* AddCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8220B50524007E5454 /* AddCommentVC.swift */; };
 		E7C10E8520B61697007E5454 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C10E8420B61697007E5454 /* DataService.swift */; };
@@ -60,7 +61,7 @@
 		E70023E620B7F4C5002CEC74 /* AddRankItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRankItemCell.swift; sourceTree = "<group>"; };
 		E70023E820B889BE002CEC74 /* AllRankingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankingItemCell.swift; sourceTree = "<group>"; };
 		E70744DF20BBEC6100BD38E9 /* EachRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachRankCell.swift; sourceTree = "<group>"; };
-		E707452420BFD36000BD38E9 /* PropertyFindFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFindFriends.swift; sourceTree = "<group>"; };
+		E707452420BFD36000BD38E9 /* PropertyFindFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFindFriendsVC.swift; sourceTree = "<group>"; };
 		E75AF9AF20B23FEA000B9BDD /* ran01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ran01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75AF9B220B23FEA000B9BDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E75AF9B420B23FEA000B9BDD /* AllRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankVC.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		E78DCF8C20C513DA00DB28ED /* FollowRankingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRankingItemCell.swift; sourceTree = "<group>"; };
 		E78DCF8E20C5141000DB28ED /* MyRankingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRankingItemCell.swift; sourceTree = "<group>"; };
 		E78DCF9020C5142000DB28ED /* FavoriteRankingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRankingItemCell.swift; sourceTree = "<group>"; };
+		E78DCF9220C7BC6100DB28ED /* FileUploadTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploadTestVC.swift; sourceTree = "<group>"; };
 		E7C10E4420B3D062007E5454 /* EachRankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachRankVC.swift; sourceTree = "<group>"; };
 		E7C10E8220B50524007E5454 /* AddCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentVC.swift; sourceTree = "<group>"; };
 		E7C10E8420B61697007E5454 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -186,11 +188,12 @@
 				E7C10E4420B3D062007E5454 /* EachRankVC.swift */,
 				E7C10E8220B50524007E5454 /* AddCommentVC.swift */,
 				E7C10E8A20B61D9F007E5454 /* PropertyMeVC.swift */,
-				E707452420BFD36000BD38E9 /* PropertyFindFriends.swift */,
+				E707452420BFD36000BD38E9 /* PropertyFindFriendsVC.swift */,
 				E7C10E8E20B61DEB007E5454 /* PropertyLogoutVC.swift */,
 				E78DCF8220C2747500DB28ED /* SendFriendRequestVC.swift */,
 				E78DCF8420C32E0600DB28ED /* FollowMemberVC.swift */,
 				E78DCF8620C32E1800DB28ED /* FollowerMemberVC.swift */,
+				E78DCF9220C7BC6100DB28ED /* FileUploadTestVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -387,11 +390,12 @@
 				E78DCF8B20C3988D00DB28ED /* FollowerMemberCell.swift in Sources */,
 				E75AF9D220B24363000B9BDD /* MyRankVC.swift in Sources */,
 				E75AF9CC20B240C3000B9BDD /* AuthVC.swift in Sources */,
-				E707452520BFD36000BD38E9 /* PropertyFindFriends.swift in Sources */,
+				E707452520BFD36000BD38E9 /* PropertyFindFriendsVC.swift in Sources */,
 				E75AF9B520B23FEA000B9BDD /* AllRankVC.swift in Sources */,
 				E78DCF8920C3987D00DB28ED /* FollowMemberCell.swift in Sources */,
 				E78DCF8320C2747500DB28ED /* SendFriendRequestVC.swift in Sources */,
 				E7C10E9520B78867007E5454 /* CreateRankingVC.swift in Sources */,
+				E78DCF9320C7BC6100DB28ED /* FileUploadTestVC.swift in Sources */,
 				E7C10E4520B3D062007E5454 /* EachRankVC.swift in Sources */,
 				E78DCF8120C25A8500DB28ED /* Friend.swift in Sources */,
 				E7C10E9920B795BB007E5454 /* PropertyService.swift in Sources */,

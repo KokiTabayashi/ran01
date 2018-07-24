@@ -1,5 +1,5 @@
 //
-//  PropertyFindFriends.swift
+//  PropertyFindFriendsVC.swift
 //  ran01
 //
 //  Created by Koki Tabayashi on 2018/05/30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PropertyFindFriends: UIViewController {
+class PropertyFindFriendsVC: UIViewController {
     
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -50,6 +50,8 @@ class PropertyFindFriends: UIViewController {
     
     @IBAction func addFriendButtonWasPressed(_ sender: UIButton) {
         let cell = sender.superview?.superview as! PropertyFindFriendsCell
+        
+        // finding which cell's button was pressed
         guard let row = self.tableView.indexPath(for: cell)?.row else {
             return
         }
@@ -68,7 +70,8 @@ class PropertyFindFriends: UIViewController {
     }
 }
 
-extension PropertyFindFriends: UITableViewDelegate, UITableViewDataSource {
+
+extension PropertyFindFriendsVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -80,7 +83,12 @@ extension PropertyFindFriends: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "propertyFriendsCell") as? PropertyFindFriendsCell else { return UITableViewCell() }
         
-        cell.configureCell(friendName: friendsArray[indexPath.row].userName)
+        DataService.instance.isFriends(withName: friendsArray[indexPath.row].userName) { (isFriendResult) in
+            let isFriend = isFriendResult
+            cell.configureCell(friendName: self.friendsArray[indexPath.row].userName, isFriend: isFriend)
+        }
+        
+//        cell.configureCell(friendName: friendsArray[indexPath.row].userName)
         
         return cell
     }
