@@ -23,6 +23,8 @@ class DataService {
     private var _REF_COMMENTS = DB_BASE.child("comments")
     private var _REF_FRIENDS = DB_BASE.child("friends")
     private var _REF_FOLLOWER = DB_BASE.child("follower")
+    private var _REF_FAVORITE = DB_BASE.child("favorite")
+    private var _REF_FAVORITEDBY = DB_BASE.child("favoritedBy")
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -59,6 +61,15 @@ class DataService {
     var REF_FOLLOWER: DatabaseReference {
         return _REF_FOLLOWER
     }
+    
+    var REF_FAVORITE: DatabaseReference {
+        return _REF_FAVORITE
+    }
+    
+    var REF_FAVORITEDBY: DatabaseReference {
+        return _REF_FAVORITEDBY
+    }
+    
     
     //
     // User function
@@ -344,6 +355,25 @@ class DataService {
             handler(rankingArray)
         }
     }
+    
+    
+    
+    // Favorite
+    func addFavoriteRanking(withRankingKey rankingKey: String, handler: @escaping (_ status: Bool) -> ()) {
+        
+        //
+        // Coded. Need add a "Favorite" button on MainStoryBoard which only shows up if the ranking is not yours.
+        //
+        
+        getCurrentUserId { (userId) in
+            // add follow
+            self.REF_FAVORITE.child(userId).childByAutoId().updateChildValues(["favoriteRankingKey": rankingKey])
+            
+            // add follower
+            self.REF_FAVORITEDBY.child(rankingKey).childByAutoId().updateChildValues(["favoritedByUserId": userId])
+        }
+    }
+    
     
     func getAllFavoriteRankingForUser(userId: String, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
 
