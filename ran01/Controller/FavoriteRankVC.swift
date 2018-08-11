@@ -15,6 +15,7 @@ class FavoriteRankVC: UIViewController {
     
     var rankingKey: String = ""
     var nameOfRankingOwner: String = ""
+    var rankingKeyArray: [String] = []
     var rankingArray: [Ranking] = []
     var rankItemsArray: [RankItem] = []
     var rankItemDetailArray: [RankItem] = []
@@ -41,11 +42,13 @@ class FavoriteRankVC: UIViewController {
     func _getAllRanking() {
         DataService.instance.getCurrentUserId { (userId) in
             
-            //            let friendsAllay: [String] = []
-            //            let favoritsAllay: [String] = []
-            
             DataService.instance.getAllFavoriteRankingForUser(userId: userId) { (returnRanking) in
-                self.rankingArray = returnRanking.reversed()
+                self.rankingKeyArray = returnRanking
+                
+                DataService.instance.getAllFavoriteRankingForRankingKey(rankingKeyArray: self.rankingKeyArray, handler: { (returnRanking) in
+                    self.rankingArray = returnRanking.reversed()
+                    self.tableView.reloadData()
+                })
                 
                 self.tableView.reloadData()
             }

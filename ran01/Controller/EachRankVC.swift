@@ -16,7 +16,10 @@ class EachRankVC: UIViewController {
     @IBOutlet weak var rankingExplanationLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var numberOfStarsLbl: UILabel!
+    
+    @IBOutlet weak var numberOfFavorites: UIButton!
     @IBOutlet weak var numberOfCommentsLbl: UIButton!
+    @IBOutlet weak var favoriteBtn: UIButton!
     
     var rankingKey: String = ""
     var rankingTitle: String = ""
@@ -50,6 +53,26 @@ class EachRankVC: UIViewController {
             self.rankItemsArray.sort(by: {$0.rank < $1.rank})
             self.tableView.reloadData()
         }
+        
+        _showFavoriteButton(rankingKey: rankingKey)
+    }
+    
+    func _showFavoriteButton(rankingKey key: String) {
+        
+        //
+        // Coding
+        // 2018/8/10
+        //
+        
+        DataService.instance.isFavorite(withFavoriteRankingKey: key) { (isFavoriteResult) in
+            let isFavorite = isFavoriteResult
+            
+            if isFavorite {
+                self.favoriteBtn.isHidden = true
+            } else {
+                self.favoriteBtn.isHidden = false
+            }
+        }
     }
     
     func _setTableView() {
@@ -58,6 +81,12 @@ class EachRankVC: UIViewController {
     }
     
     @IBAction func starBtnWasPressed(_ sender: Any) {
+    }
+    
+    @IBAction func favoriteBtnWasPressed(_ sender: Any) {
+        DataService.instance.addFavoriteRanking(withRankingKey: rankingKey) { (success) in
+            
+        }
     }
     
     @IBAction func commentBtnWasPressed(_ sender: Any) {

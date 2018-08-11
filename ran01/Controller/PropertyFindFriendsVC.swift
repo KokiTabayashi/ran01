@@ -81,7 +81,7 @@ extension PropertyFindFriendsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "propertyFriendsCell") as? PropertyFindFriendsCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "propertyFindFriendsCell") as? PropertyFindFriendsCell else { return UITableViewCell() }
         
         DataService.instance.isFriends(withName: friendsArray[indexPath.row].userName) { (isFriendResult) in
             let isFriend = isFriendResult

@@ -374,24 +374,96 @@ class DataService {
         }
     }
     
+    func isFavorite(withFavoriteRankingKey key: String, handler: @escaping (_ status: Bool) -> ()) {
+        
+        //
+        // Need to change code?
+        // 2018/8/10
+        // Original isFriends
+        //
+        
+        getCurrentUserId { (userId) in
+            self.REF_FAVORITE.child(userId).queryOrderedByKey().observeSingleEvent(of: .value) { (favoritesSnapshot) in
+                guard let favoritesSnapshot = favoritesSnapshot.children.allObjects as? [DataSnapshot] else { return }
+                
+                for favorite in favoritesSnapshot {
+                    let favoriteRankingKey = favorite.childSnapshot(forPath: "favoriteRankingKey").value as! String
+                    
+                    if favoriteRankingKey == key {
+                        handler(true)
+                    } else {
+                        handler(false)
+                    }
+                }
+            }
+        }
+    }
     
-    func getAllFavoriteRankingForUser(userId: String, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+//    func getAllFavoriteRankingForUser(userId: String, handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
+//
+//        var rankingKeyArray = [String]()
+//        var rankingArray = [Ranking]()
+//
+//        REF_FAVORITE.child(userId).observeSingleEvent(of: .value) { (favoriteRankingSnapshot) in
+//
+//            guard let favoriteRankingSnapshot = favoriteRankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+//
+//            for ranking in favoriteRankingSnapshot {
+//                let rankingKey = ranking.childSnapshot(forPath: "favoriteRankingKey").value as! String
+//                rankingKeyArray.append(rankingKey)
+//            }
+//
+//
+//                let rankingKey = ranking.childSnapshot(forPath: "favoriteRankingKey").value as! String
+//                let title: String = ""
+//                let rankingUserId: String = ""
+//                let date: String = ""
+//                let explanation: String = ""
+//                let itemsId: [String] = []
+//                let starsId: [String] = []
+//                let commentsId: [String] = []
+//
+//                let ranking = Ranking(rankingKey: rankingKey, title: title, userId: rankingUserId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
+//
+//                rankingArray.append(ranking)
+//            }
+//            handler(rankingArray)
+//        }
+//    }
+    
+    func getAllFavoriteRankingForUser(userId: String, handler: @escaping (_ rankingKeyArray: [String]) -> ()) {
+
+        var rankingKeyArray = [String]()
+
+        REF_FAVORITE.child(userId).observeSingleEvent(of: .value) { (favoriteRankingSnapshot) in
+
+            guard let favoriteRankingSnapshot = favoriteRankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
+
+            for ranking in favoriteRankingSnapshot {
+                let rankingKey = ranking.childSnapshot(forPath: "favoriteRankingKey").value as! String
+                rankingKeyArray.append(rankingKey)
+            }
+            handler(rankingKeyArray)
+        }
+    }
+    
+    func getAllFavoriteRankingForRankingKey(rankingKeyArray: [String], handler: @escaping (_ rankingArray: [Ranking]) -> ()) {
 
         //
-        // Need to code this function 2018/07/23
+        // Coded 2018/8/10
+        // Original: getAllRankingForUser
         //
-
 
         var rankingArray = [Ranking]()
-        
+
         REF_RANKING.observeSingleEvent(of: .value) { (rankingSnapshot) in
-            
+
             guard let rankingSnapshot = rankingSnapshot.children.allObjects as? [DataSnapshot] else { return }
-            
+
             for ranking in rankingSnapshot {
                 // getting ranking Key
                 let rankingKey = ranking.key
-                
+
                 let title = ranking.childSnapshot(forPath: "title").value as! String
                 let rankingUserId = ranking.childSnapshot(forPath: "userId").value as! String
                 let date = ranking.childSnapshot(forPath: "dateAndTime").value as! String
@@ -399,11 +471,12 @@ class DataService {
                 let itemsId: [String] = []
                 let starsId: [String] = []
                 let commentsId: [String] = []
-                
+
                 let ranking = Ranking(rankingKey: rankingKey, title: title, userId: rankingUserId, date: date, explanation: explanation, itemsId: itemsId, starsId: starsId, commentsId: commentsId)
-                
-                if userId == rankingUserId {
-                    rankingArray.append(ranking)
+                for key in rankingKeyArray {
+                    if key == rankingKey {
+                        rankingArray.append(ranking)
+                    }
                 }
             }
             handler(rankingArray)
