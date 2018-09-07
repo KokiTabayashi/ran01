@@ -377,7 +377,6 @@ class DataService {
     func isFavorite(withFavoriteRankingKey key: String, handler: @escaping (_ status: Bool) -> ()) {
         
         //
-        // Need to change code?
         // 2018/8/10
         // Original isFriends
         //
@@ -386,15 +385,16 @@ class DataService {
             self.REF_FAVORITE.child(userId).queryOrderedByKey().observeSingleEvent(of: .value) { (favoritesSnapshot) in
                 guard let favoritesSnapshot = favoritesSnapshot.children.allObjects as? [DataSnapshot] else { return }
                 
+                var isFavorite = false
+                
                 for favorite in favoritesSnapshot {
                     let favoriteRankingKey = favorite.childSnapshot(forPath: "favoriteRankingKey").value as! String
                     
                     if favoriteRankingKey == key {
-                        handler(true)
-                    } else {
-                        handler(false)
+                        isFavorite = true
                     }
                 }
+                handler(isFavorite)
             }
         }
     }

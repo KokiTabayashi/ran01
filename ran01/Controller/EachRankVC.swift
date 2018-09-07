@@ -29,6 +29,7 @@ class EachRankVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         _setTableView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +64,6 @@ class EachRankVC: UIViewController {
         // Coding
         // 2018/8/10
         //
-        
         DataService.instance.isFavorite(withFavoriteRankingKey: key) { (isFavoriteResult) in
             let isFavorite = isFavoriteResult
             
